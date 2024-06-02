@@ -1,0 +1,32 @@
+{
+  "name": "what-to-what",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Личный проект «Что посмотреть» от HTML Academy",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "start": "webpack-dev-server --mode=production",
+    "eslint": "eslint --ext .jsx --ext .js src/",
+    "test": "npm run eslint"
+  },
+  "devDependencies": {
+    "@babel/core": "7.24.3",
+    "@babel/preset-env": "7.24.3",
+    "@babel/preset-react": "7.24.1",
+    "babel-loader": "9.1.3",
+    "eslint": "5.13.0",
+    "eslint-config-htmlacademy": "0.5.2",
+    "eslint-plugin-react": "7.34.1",
+    "webpack": "5.91.0",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "5.0.4"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
+
