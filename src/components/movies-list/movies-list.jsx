@@ -1,33 +1,45 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, {PureComponent} from "react"
+import PropTypes from "prop-types"
+
+import MovieCard from "../movie-card/movie-card.jsx"
 
 
-const MoviesList = (props) => {
-  const {
-    movies
-  } = props
+class MoviesList extends PureComponent {
+  constructor(props) {
+    super(props)
 
-  return (
-    <div className="catalog__movies-list">
+    this.state = {
+      activeMovie: null,
+    }
 
-      {movies.map((movie, i) => {
-        return (
-          <article key={i} className="small-movie-card catalog__movies-card">
-            <div className="small-movie-card__image">
-              <img src="https://placehold.co/280x175/EEE/31343C" alt={movie} width="280" height="175"/>
-            </div>
-            <h3 className="small-movie-card__title">
-              <a className="small-movie-card__link" href="/">{movie}</a>
-            </h3>
-          </article>
-        )
-      })}
-    </div>
-  )
+    this._movieCardMouseEnterHandler = this._movieCardMouseEnterHandler.bind(this)
+  }
+
+  render() {
+    const {
+      movies
+    } = this.props
+
+    return (
+      <div className="catalog__movies-list">
+        {movies.map((movie, i) => {
+          return <MovieCard key={`movie-${i}`} movie={movie} onMouseEnter={this._movieCardMouseEnterHandler} />
+        })}
+      </div>
+    )
+  }
+
+  _movieCardMouseEnterHandler(movie) {
+    this.setState((prevState) => {
+      return Object.assign({}, prevState, {
+        activeMovie: movie
+      })
+    })
+  }
 }
 
 MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.string).isRequired
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 

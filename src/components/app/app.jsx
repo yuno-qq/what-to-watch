@@ -1,10 +1,13 @@
 import React from "react"
+import PropTypes from "prop-types"
 
 import MoviesList from "../movies-list/movies-list.jsx"
 
 
-const App = () => {
-  const movies = [`Красный дракон`, `Молчание ягнят`, `Ганнибал`, `Восхождение Ганнибала`]
+const App = (props) => {
+  const {
+    movies
+  } = props
 
   return (
     <div>
@@ -125,5 +128,8 @@ const App = () => {
   )
 }
 
+App.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired
+}
 
 export default App
