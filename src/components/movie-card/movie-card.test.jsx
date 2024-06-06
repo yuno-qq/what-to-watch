@@ -4,12 +4,12 @@ import renderer from 'react-test-renderer'
 
 import movies from "../../mocks/movies.jsx"
 
-import MoviesList from './movies-list.jsx'
+import MovieCard from './movie-card.jsx'
 
 
-describe(`Movies List snapshots`, () => {
+describe(`MovieCard snapshots`, () => {
   test(`main snapshot`, () => {
-    const tree = renderer.create(<MoviesList movies={movies} />)
+    const tree = renderer.create(<MovieCard movie={movies[0]} onMouseEnter={() => {}} />)
       .toJSON()
 
     expect(tree).toMatchSnapshot()

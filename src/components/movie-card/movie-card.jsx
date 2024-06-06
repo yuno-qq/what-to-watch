@@ -27,11 +27,11 @@ class MovieCard extends PureComponent {
 }
 
 MovieCard.propTypes = {
-  movie: PropTypes.arrayOf(PropTypes.exact({
+  movie: PropTypes.exact({
     imageSrc: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-  })).isRequired,
+  }).isRequired,
   onMouseEnter: PropTypes.func.isRequired
 }
 
