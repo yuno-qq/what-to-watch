@@ -30,10 +30,10 @@ class MoviesList extends PureComponent {
   }
 
   _movieCardMouseEnterHandler(movie) {
-    this.setState((prevState) => {
-      return Object.assign({}, prevState, {
+    this.setState(() => {
+      return {
         activeMovie: movie
-      })
+      }
     })
   }
 }
