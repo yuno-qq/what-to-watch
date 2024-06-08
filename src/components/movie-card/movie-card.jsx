@@ -18,7 +18,7 @@ class MovieCard extends PureComponent {
 
   render() {
     const {
-      movie,
+      movie
     } = this.props
 
     const {
@@ -42,28 +42,46 @@ class MovieCard extends PureComponent {
     )
   }
 
+  componentDidUpdate() {
+    const {
+      isActive
+    } = this.props
+
+    if (isActive) {
+      this._playingTimeout = setTimeout(() => {
+        this.setState({
+          isPlaying: true
+        })
+      }, this._TIME_BEFORE_PLAYING)
+
+      return
+    }
+
+    this.setState({
+      isPlaying: false
+    }, () => {
+      if (this._playingTimeout) {
+        clearTimeout(this._playingTimeout)
+      }
+      this._playingTimeout = null
+    })
+  }
+
   _cardMouseEnterHandler() {
     const {
       movie,
       onMouseEnter = () => {}
     } = this.props
 
-    this._playingTimeout = setTimeout(() => {
-      this.setState({
-        isPlaying: true
-      })
-    }, this._TIME_BEFORE_PLAYING)
-
     onMouseEnter(movie)
   }
 
   _cardMouseLeaveHandler() {
-    this.setState({
-      isPlaying: false
-    }, () => {
-      clearTimeout(this._playingTimeout)
-      this._playingTimeout = null
-    })
+    const {
+      onMouseLeave = () => {}
+    } = this.props
+
+    onMouseLeave()
   }
 }
 
@@ -75,5 +93,6 @@ MovieCard.propTypes = {
   }).isRequired,
   onMouseEnter: PropTypes.func.isRequired
 }
+
 
 export default MovieCard
