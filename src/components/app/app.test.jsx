@@ -7,8 +7,8 @@ import movies from "../../mocks/movies.jsx"
 import App from "./app.jsx"
 
 
-describe(`App rendering`, () => {
-  test(`main snapshot`, () => {
+describe(`<App> snapshots:`, () => {
+  test(`should render main page`, () => {
     const tree = renderer.create(<App movies={movies} />)
       .toJSON()
 

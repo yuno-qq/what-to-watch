@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App rendering main snapshot 1`] = `
+exports[`<App> snapshots: should render main page 1`] = `
 <div>
   <section
     className="movie-card"
@@ -260,15 +260,18 @@ exports[`App rendering main snapshot 1`] = `
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Красный дракон"
-              height="175"
-              src="https://placehold.co/280x175/EEE/31343C"
-              width="280"
+            <video
+              loop={true}
+              muted={true}
+              onCanPlay={[Function]}
+              onWaiting={[Function]}
+              poster="https://placehold.co/280x175/EEE/31343C"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             />
           </div>
           <h3
@@ -285,15 +288,18 @@ exports[`App rendering main snapshot 1`] = `
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Молчание ягнят"
-              height="175"
-              src="https://placehold.co/280x175/EEE/31343C"
-              width="280"
+            <video
+              loop={true}
+              muted={true}
+              onCanPlay={[Function]}
+              onWaiting={[Function]}
+              poster="https://placehold.co/280x175/EEE/31343C"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             />
           </div>
           <h3
@@ -310,15 +316,18 @@ exports[`App rendering main snapshot 1`] = `
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Ганнибал"
-              height="175"
-              src="https://placehold.co/280x175/EEE/31343C"
-              width="280"
+            <video
+              loop={true}
+              muted={true}
+              onCanPlay={[Function]}
+              onWaiting={[Function]}
+              poster="https://placehold.co/280x175/EEE/31343C"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             />
           </div>
           <h3
@@ -335,15 +344,18 @@ exports[`App rendering main snapshot 1`] = `
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Восхождение Ганнибала"
-              height="175"
-              src="https://placehold.co/280x175/EEE/31343C"
-              width="280"
+            <video
+              loop={true}
+              muted={true}
+              onCanPlay={[Function]}
+              onWaiting={[Function]}
+              poster="https://placehold.co/280x175/EEE/31343C"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             />
           </div>
           <h3
@@ -360,15 +372,18 @@ exports[`App rendering main snapshot 1`] = `
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Черное воскресенье"
-              height="175"
-              src="https://placehold.co/280x175/EEE/31343C"
-              width="280"
+            <video
+              loop={true}
+              muted={true}
+              onCanPlay={[Function]}
+              onWaiting={[Function]}
+              poster="https://placehold.co/280x175/EEE/31343C"
+              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
             />
           </div>
           <h3
@@ -385,15 +400,18 @@ exports[`App rendering main snapshot 1`] = `
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Кари Мора"
-              height="175"
-              src="https://placehold.co/280x175/EEE/31343C"
-              width="280"
+            <video
+              loop={true}
+              muted={true}
+              onCanPlay={[Function]}
+              onWaiting={[Function]}
+              poster="https://placehold.co/280x175/EEE/31343C"
+              src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
             />
           </div>
           <h3
