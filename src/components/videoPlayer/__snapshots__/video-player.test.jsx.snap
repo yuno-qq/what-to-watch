@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VideoPlayer> snapshots: should render "Черное воскресенье" 1`] = `
+<video
+  loop={true}
+  muted={true}
+  onCanPlay={[Function]}
+  onWaiting={[Function]}
+  poster="/black-sunday-image"
+  src="/black-sunday-preview"
+/>
+`;
