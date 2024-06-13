@@ -76,5 +76,11 @@ class VideoPlayer extends PureComponent {
   }
 }
 
+VideoPlayer.propTypes = {
+  imageSrc: PropTypes.string.isRequired,
+  previewSrc: PropTypes.string.isRequired,
+  shouldPlay: PropTypes.bool
+}
+
 
 export default VideoPlayer
