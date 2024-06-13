@@ -12,7 +12,7 @@ Enzyme.configure({
   adapter: new Adapter()
 })
 
-describe(`MovieCard hovers`, () => {
+describe(`<MovieCard> hovers`, () => {
   test(`basic hover`, () => {
     const preventDefault = jest.fn()
     const onMouseEnter = jest.fn()
