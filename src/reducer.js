@@ -4,9 +4,14 @@ import moviesData from "./mocks/movies.jsx"
 import {defaultGenre} from "./utils"
 
 
+const MOVIES_ON_PAGE_COUNT = 4 // TODO 20
+
 const initialState = {
   genre: defaultGenre,
-  movies: moviesData
+  movies: moviesData,
+  showingMoviesCount: MOVIES_ON_PAGE_COUNT > moviesData.length
+    ? moviesData.length
+    : MOVIES_ON_PAGE_COUNT
 }
 
 const filterMoviesByGenre = (genre, movies) => {
@@ -30,6 +35,23 @@ const ActionCreator = {
       type: `SET_MOVIES`,
       payload: filterMoviesByGenre(genre, movies)
     }
+  },
+
+  resetMoviesCount: () => {
+    return {
+      type: `RESET_MOVIES_COUNT`
+    }
+  },
+
+  incrementMoviesCount: (moviesLength, moviesOnPageCount, showingMoviesCount) => {
+    const incrementer = showingMoviesCount + moviesOnPageCount > moviesLength
+      ? moviesLength - showingMoviesCount
+      : moviesOnPageCount
+
+    return {
+      type: `INCREMENT_MOVIES_COUNT`,
+      payload: incrementer
+    }
   }
 }
 
@@ -44,6 +66,16 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         movies: action.payload
       })
+
+    case `RESET_MOVIES_COUNT`:
+      return Object.assign({}, state, {
+        showingMoviesCount: MOVIES_ON_PAGE_COUNT
+      })
+
+    case `INCREMENT_MOVIES_COUNT`:
+      return Object.assign({}, state, {
+        showingMoviesCount: state.showingMoviesCount + action.payload
+      })
   }
 
   return state
@@ -54,6 +86,7 @@ const store = createStore(reducer)
 
 export {
   filterMoviesByGenre,
+  MOVIES_ON_PAGE_COUNT,
   ActionCreator,
   store,
   reducer

@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 
 import MovieCard from "../movie-card/movie-card.jsx"
 
+import ShowMore from "../../containers/show-more"
+
 
 class MoviesList extends PureComponent {
   constructor(props) {
@@ -18,23 +20,28 @@ class MoviesList extends PureComponent {
 
   render() {
     const {
-      movies
+      movies,
+      showingMoviesCount
     } = this.props
 
     const {
-      activeMovie
+      activeMovie,
     } = this.state
 
     return (
-      <div className="catalog__movies-list">
-        {movies.map((movie, i) => {
-          return <MovieCard key={`movie-${i}`}
-            movie={movie}
-            isActive={movie === activeMovie}
-            onMouseEnter={this._movieCardMouseEnterHandler}
-            onMouseLeave={this._movieCardMouseLeaveHandler}/>
-        })}
-      </div>
+      <>
+        <div className="catalog__movies-list">
+          {movies.slice(0, showingMoviesCount).map((movie, i) => {
+            return <MovieCard key={`movie-${i}`}
+              movie={movie}
+              isActive={movie === activeMovie}
+              onMouseEnter={this._movieCardMouseEnterHandler}
+              onMouseLeave={this._movieCardMouseLeaveHandler}/>
+          })}
+        </div>
+
+        {movies.length > showingMoviesCount && <ShowMore />}
+      </>
     )
   }
 

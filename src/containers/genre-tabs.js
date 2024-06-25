@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onClickTab: (genre) => {
       dispatch(ActionCreator.setGenre(genre))
       dispatch(ActionCreator.setMoviesByGenre(genre, movies))
+      dispatch(ActionCreator.resetMoviesCount())
     }
   })
 }

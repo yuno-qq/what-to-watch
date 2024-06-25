@@ -5,7 +5,8 @@ import MoviesList from "../components/movies-list/movies-list.jsx"
 
 const mapStateToProps = (state, ownProps) => {
   return Object.assign({}, ownProps, {
-    movies: state.movies
+    movies: state.movies,
+    showingMoviesCount: state.showingMoviesCount
   })
 }
 
