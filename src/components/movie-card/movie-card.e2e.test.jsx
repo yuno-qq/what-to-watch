@@ -4,7 +4,7 @@ import Adapter from "@cfaester/enzyme-adapter-react-18"
 import {describe, test, expect, beforeEach} from "@jest/globals"
 
 import MovieCard from "./movie-card.jsx"
-import VideoPlayer from "../videoPlayer/video-player.jsx"
+import VideoPlayer from "../video-player/video-player.jsx"
 
 
 Enzyme.configure({

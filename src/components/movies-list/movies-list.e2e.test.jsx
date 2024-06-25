@@ -5,7 +5,7 @@ import {describe, test, expect, beforeEach} from "@jest/globals"
 
 import MoviesList from "./movies-list.jsx"
 import MovieCard from "../movie-card/movie-card.jsx"
-import VideoPlayer from "../videoPlayer/video-player.jsx"
+import VideoPlayer from "../video-player/video-player.jsx"
 
 Enzyme.configure({
   adapter: new Adapter()
