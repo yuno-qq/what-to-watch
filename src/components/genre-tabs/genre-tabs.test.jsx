@@ -21,6 +21,7 @@ describe(`<GenreTabs/> snapshots:`, () => {
         name: `Comedy`
       },
     ]
+
     const tree = renderer.create(<GenreTabs
       genres={genres}
       activeGenre={genres[0]}
@@ -45,6 +46,7 @@ describe(`<GenreTabs/> snapshots:`, () => {
         name: `Comedy`
       },
     ]
+
     const tree = renderer.create(<GenreTabs
       genres={genres}
       activeGenre={genres[2]}

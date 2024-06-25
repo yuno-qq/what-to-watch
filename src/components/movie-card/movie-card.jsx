@@ -91,6 +91,10 @@ MovieCard.propTypes = {
     previewSrc: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    genre: PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired
   }).isRequired,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,

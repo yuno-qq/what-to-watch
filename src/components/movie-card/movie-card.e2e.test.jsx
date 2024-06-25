@@ -28,7 +28,11 @@ describe(`<MovieCard> hovers`, () => {
       imageSrc: `https://placehold.co/280x175/EEE/31343C`,
       url: `/`,
       previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-      name: `Красный дракон`
+      name: `Красный дракон`,
+      genre: {
+        id: `comedies`,
+        name: `Comedies`,
+      },
     }
 
     const wrapper = mount(<MovieCard
@@ -57,7 +61,11 @@ describe(`<MovieCard> hovers`, () => {
       imageSrc: `https://placehold.co/280x175/EEE/31343C`,
       url: `/`,
       previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-      name: `Красный дракон`
+      name: `Красный дракон`,
+      genre: {
+        id: `comedies`,
+        name: `Comedies`,
+      },
     }
 
     const wrapper = mount(<MovieCard
@@ -118,7 +126,11 @@ describe(`<MovieCard> hovers`, () => {
       imageSrc: `https://placehold.co/280x175/EEE/31343C`,
       url: `/`,
       previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-      name: `Красный дракон`
+      name: `Красный дракон`,
+      genre: {
+        id: `comedies`,
+        name: `Comedies`,
+      },
     }
 
     const wrapper = mount(<MovieCard
@@ -168,7 +180,11 @@ describe(`<MovieCard> hovers`, () => {
       imageSrc: `https://placehold.co/280x175/EEE/31343C`,
       url: `/`,
       previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-      name: `Красный дракон`
+      name: `Красный дракон`,
+      genre: {
+        id: `comedies`,
+        name: `Comedies`,
+      },
     }
 
     const wrapper = mount(<MovieCard
