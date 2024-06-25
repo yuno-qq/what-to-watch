@@ -17,7 +17,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return Object.assign({}, ownProps, {
     onClickTab: (genre) => {
       dispatch(ActionCreator.setGenre(genre))
-      debugger
       dispatch(ActionCreator.setMoviesByGenre(genre, movies))
     }
   })

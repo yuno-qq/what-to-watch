@@ -25,10 +25,10 @@ const ActionCreator = {
     }
   },
 
-  setMoviesByGenre: (genre, moviesData) => {
+  setMoviesByGenre: (genre, movies) => {
     return {
       type: `SET_MOVIE`,
-      payload: filterMoviesByGenre(genre, moviesData)
+      payload: filterMoviesByGenre(genre, movies)
     }
   }
 }

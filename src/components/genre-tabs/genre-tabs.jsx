@@ -32,5 +32,18 @@ class GenreTabs extends PureComponent {
   }
 }
 
+GenreTabs.propTypes = {
+  onClickTab: PropTypes.func.isRequired,
+  activeGenre: PropTypes.exact({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+
+  genres: PropTypes.arrayOf(PropTypes.exact({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired).isRequired,
+}
+
 
 export default GenreTabs

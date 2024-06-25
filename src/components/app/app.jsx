@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 
 import MoviesList from "../../containers/movies-list"
 import GenreTabs from "../../containers/genre-tabs"
