@@ -27,7 +27,7 @@ const ActionCreator = {
 
   setMoviesByGenre: (genre, movies) => {
     return {
-      type: `SET_MOVIE`,
+      type: `SET_MOVIES`,
       payload: filterMoviesByGenre(genre, movies)
     }
   }
@@ -40,7 +40,7 @@ const reducer = (state = initialState, action) => {
         genre: action.payload
       })
 
-    case `SET_MOVIE`:
+    case `SET_MOVIES`:
       return Object.assign({}, state, {
         movies: action.payload
       })
