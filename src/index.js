@@ -1,14 +1,17 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import {Provider} from "react-redux"
 
-import movies from "./mocks/movies.jsx"
+import {store} from "./reducer"
 
 import App from "./components/app/app.jsx"
 
 
 const init = () => {
   ReactDOM.render(
-      <App movies={movies}/>,
+      <Provider store={store}>
+        <App />
+      </Provider>,
       document.querySelector(`#root`)
   )
 }
