@@ -21,6 +21,11 @@ class GenreTabs extends PureComponent {
             <li key={genre.id} className={`catalog__genres-item ${activeGenre.id === genre.id ? `catalog__genres-item--active` : ``}`}>
               <a onClick={(evt) => {
                 evt.preventDefault()
+
+                if (activeGenre.id === genre.id) {
+                  return
+                }
+
                 onClickTab(genre)
               }}
               href="#" className="catalog__genres-link">{genre.name}</a>
