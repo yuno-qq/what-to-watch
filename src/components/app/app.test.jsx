@@ -36,8 +36,9 @@ describe(`<App> snapshots:`, () => {
           url: `/`,
           previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
           name: `Молчание ягнят`
-        },
-      ]
+        }
+      ],
+      showingMoviesCount: 2
     }
 
     const store = configureStore()(initialState)

@@ -2,10 +2,13 @@ import React, {act} from "react"
 import Enzyme, {mount} from 'enzyme'
 import Adapter from "@cfaester/enzyme-adapter-react-18"
 import {describe, test, expect, beforeEach} from "@jest/globals"
+import {Provider} from "react-redux"
+import configureStore from "redux-mock-store"
 
 import MoviesList from "./movies-list.jsx"
 import MovieCard from "../movie-card/movie-card.jsx"
 import VideoPlayer from "../video-player/video-player.jsx"
+
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -85,7 +88,20 @@ describe(`<MovieList> mouseenter and mouseleave`, () => {
 
     const preventDefault = () => {}
 
-    const wrapper = mount(<MoviesList movies={movies}/>)
+    const store = configureStore()({
+      movies,
+      genre: {
+        id: `all`,
+        name: `All genres`
+      },
+      showingMoviesCount: 4
+    })
+
+    const wrapper = mount(
+        <Provider store={store}>
+          <MoviesList showingMoviesCount={4} movies={movies}/>
+        </Provider>
+    ).find(MoviesList)
 
     const firstMovieWrapper = wrapper.find(MovieCard).at(0)
     const firstMovie = firstMovieWrapper.find(`.small-movie-card`)

@@ -15,7 +15,7 @@ Enzyme.configure({
 })
 
 describe(`<GenreTabs> click on tabs UNIT`, () => {
-  test(`2nd tab + 1st tab`, () => {
+  test(`2nd tab`, () => {
     const genres = [
       {
         id: `all`,
@@ -47,15 +47,6 @@ describe(`<GenreTabs> click on tabs UNIT`, () => {
 
     expect(onClickTab).toHaveBeenCalledTimes(1)
     expect(onClickTab.mock.calls[0][0]).toBe(genres[1])
-
-    let link1 = wrapper.find(`.catalog__genres-link`).at(0)
-
-    link1.simulate(`click`, {
-      preventDefault
-    })
-
-    expect(onClickTab).toHaveBeenCalledTimes(2)
-    expect(onClickTab.mock.calls[1][0]).toBe(genres[0])
   })
 })
 

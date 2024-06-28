@@ -1,6 +1,8 @@
 import React from 'react'
 import {describe, test, expect} from '@jest/globals'
 import renderer from 'react-test-renderer'
+import {Provider} from 'react-redux'
+import configureStore from 'redux-mock-store'
 
 import MoviesList from './movies-list.jsx'
 
@@ -70,8 +72,20 @@ describe(`<MoviesList> snapshots:`, () => {
       },
     ]
 
-    const tree = renderer.create(<MoviesList movies={movies} />)
-      .toJSON()
+    const store = configureStore()({
+      movies,
+      genre: {
+        id: `all`,
+        name: `All genres`,
+      },
+      showingMoviesCount: 4
+    })
+
+    const tree = renderer.create(
+        <Provider store={store}>
+          <MoviesList movies={movies} showingMoviesCount={4} />
+        </Provider>
+    ).toJSON()
 
     expect(tree).toMatchSnapshot()
   })

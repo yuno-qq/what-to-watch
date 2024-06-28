@@ -269,16 +269,6 @@ exports[`<App> snapshots: should render main page 1`] = `
           </h3>
         </article>
       </div>
-      <div
-        className="catalog__more"
-      >
-        <button
-          className="catalog__button"
-          type="button"
-        >
-          Show more
-        </button>
-      </div>
     </section>
     <footer
       className="page-footer"

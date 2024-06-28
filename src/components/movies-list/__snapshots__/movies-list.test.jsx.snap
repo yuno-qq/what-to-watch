@@ -1,176 +1,133 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<MoviesList> snapshots: should render movies ["Красный дракон", "Молчание ягнят", "Ганнибал", "Восхождение Ганнибала", "Черное воскресенье", "Кари Мора"] 1`] = `
-<div
-  className="catalog__movies-list"
->
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+[
+  <div
+    className="catalog__movies-list"
   >
-    <div
-      className="small-movie-card__image"
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
     >
-      <video
-        loop={true}
-        muted={true}
-        onCanPlay={[Function]}
-        onWaiting={[Function]}
-        poster="https://placehold.co/280x175/EEE/31343C"
-        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="/"
+      <div
+        className="small-movie-card__image"
       >
-        Красный дракон
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
+        <video
+          loop={true}
+          muted={true}
+          onCanPlay={[Function]}
+          onWaiting={[Function]}
+          poster="https://placehold.co/280x175/EEE/31343C"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/"
+        >
+          Красный дракон
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+      >
+        <video
+          loop={true}
+          muted={true}
+          onCanPlay={[Function]}
+          onWaiting={[Function]}
+          poster="https://placehold.co/280x175/EEE/31343C"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/"
+        >
+          Молчание ягнят
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+      >
+        <video
+          loop={true}
+          muted={true}
+          onCanPlay={[Function]}
+          onWaiting={[Function]}
+          poster="https://placehold.co/280x175/EEE/31343C"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/"
+        >
+          Ганнибал
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+      >
+        <video
+          loop={true}
+          muted={true}
+          onCanPlay={[Function]}
+          onWaiting={[Function]}
+          poster="https://placehold.co/280x175/EEE/31343C"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/"
+        >
+          Восхождение Ганнибала
+        </a>
+      </h3>
+    </article>
+  </div>,
+  <div
+    className="catalog__more"
   >
-    <div
-      className="small-movie-card__image"
+    <button
+      className="catalog__button"
+      onClick={[Function]}
+      type="button"
     >
-      <video
-        loop={true}
-        muted={true}
-        onCanPlay={[Function]}
-        onWaiting={[Function]}
-        poster="https://placehold.co/280x175/EEE/31343C"
-        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="/"
-      >
-        Молчание ягнят
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <video
-        loop={true}
-        muted={true}
-        onCanPlay={[Function]}
-        onWaiting={[Function]}
-        poster="https://placehold.co/280x175/EEE/31343C"
-        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="/"
-      >
-        Ганнибал
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <video
-        loop={true}
-        muted={true}
-        onCanPlay={[Function]}
-        onWaiting={[Function]}
-        poster="https://placehold.co/280x175/EEE/31343C"
-        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="/"
-      >
-        Восхождение Ганнибала
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <video
-        loop={true}
-        muted={true}
-        onCanPlay={[Function]}
-        onWaiting={[Function]}
-        poster="https://placehold.co/280x175/EEE/31343C"
-        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="/"
-      >
-        Черное воскресенье
-      </a>
-    </h3>
-  </article>
-  <article
-    className="small-movie-card catalog__movies-card"
-    onMouseEnter={[Function]}
-    onMouseLeave={[Function]}
-  >
-    <div
-      className="small-movie-card__image"
-    >
-      <video
-        loop={true}
-        muted={true}
-        onCanPlay={[Function]}
-        onWaiting={[Function]}
-        poster="https://placehold.co/280x175/EEE/31343C"
-        src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-      />
-    </div>
-    <h3
-      className="small-movie-card__title"
-    >
-      <a
-        className="small-movie-card__link"
-        href="/"
-      >
-        Кари Мора
-      </a>
-    </h3>
-  </article>
-</div>
+      Show more
+    </button>
+  </div>,
+]
 `;
