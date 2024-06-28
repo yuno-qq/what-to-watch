@@ -94,7 +94,8 @@ MovieCard.propTypes = {
     genre: PropTypes.exact({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-    }).isRequired
+    }).isRequired,
+    id: PropTypes.string
   }).isRequired,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,

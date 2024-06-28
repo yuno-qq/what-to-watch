@@ -20,5 +20,9 @@ class ShowMore extends PureComponent {
   }
 }
 
+ShowMore.propTypes = {
+  onClick: PropTypes.func.isRequired
+}
+
 
 export default ShowMore
