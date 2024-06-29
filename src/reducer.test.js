@@ -274,7 +274,8 @@ describe(`reducer() SET_GENRE test`, () => {
         id: `all`,
         name: `All genres`
       },
-      movies
+      movies,
+      showingMoviesCount: 4
     }
 
     expect(reducer(initialState, {
@@ -288,7 +289,8 @@ describe(`reducer() SET_GENRE test`, () => {
         id: `comedy`,
         name: `Comedy`
       },
-      movies
+      movies,
+      showingMoviesCount: 4
     })
   })
 })
@@ -300,7 +302,8 @@ describe(`reducer() SET_MOVIES test`, () => {
         id: `all`,
         name: `All genres`
       },
-      movies
+      movies,
+      showingMoviesCount: 4
     }
 
     const crimeMovies = [
@@ -334,7 +337,8 @@ describe(`reducer() SET_MOVIES test`, () => {
         id: `all`,
         name: `All genres`
       },
-      movies: crimeMovies
+      movies: crimeMovies,
+      showingMoviesCount: 4
     })
   })
 })
@@ -346,7 +350,8 @@ describe(`reducer() without correct action test`, () => {
         id: `all`,
         name: `All genres`
       },
-      movies
+      movies,
+      showingMoviesCount: 4
     }
 
     expect(reducer(initialState, {
