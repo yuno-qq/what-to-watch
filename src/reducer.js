@@ -76,6 +76,9 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         showingMoviesCount: state.showingMoviesCount + action.payload
       })
+
+    case `FULL_RESET`:
+      return Object.assign({}, initialState)
   }
 
   return state

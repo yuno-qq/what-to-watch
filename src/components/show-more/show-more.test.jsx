@@ -1,7 +1,8 @@
 import React from "react"
 import {describe, test, expect} from "@jest/globals"
 import renderer from "react-test-renderer"
-import ShowMore from "./show-more"
+
+import ShowMore from "./show-more.jsx"
 
 
 describe(`<ShowMore> snapshots:`, () => {
