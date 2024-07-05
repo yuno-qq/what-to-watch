@@ -10,6 +10,7 @@ describe(`<withActiveItem> snapshots:`, () => {
     const MockComponent = withActiveItem(() => <div className="MOCK_COMPONENT"></div>)
 
     const tree = renderer.create(<MockComponent />)
+      .toJSON()
 
     expect(tree).toMatchSnapshot()
   })

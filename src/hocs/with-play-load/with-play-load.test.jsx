@@ -10,6 +10,7 @@ describe(`<withPlayLoad> snapshots:`, () => {
     const MockComponentWrapped = withPlayLoad(() => <div className="MOCK_COMPONENT"></div>)
 
     const tree = renderer.create(<MockComponentWrapped />)
+      .toJSON()
 
     expect(tree).toMatchSnapshot()
   })

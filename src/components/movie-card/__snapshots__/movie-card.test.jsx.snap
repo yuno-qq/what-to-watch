@@ -8,6 +8,28 @@ exports[`<MovieCard> snapshots: should render movie "Красный дракон
 >
   <div
     className="small-movie-card__image"
+  />
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+      href="/"
+    >
+      Красный дракон
+    </a>
+  </h3>
+</article>
+`;
+
+exports[`<MovieCard> snapshots: should render movie card with videoPlayer 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="small-movie-card__image"
   >
     <video
       loop={true}

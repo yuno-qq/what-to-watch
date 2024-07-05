@@ -31,6 +31,7 @@ describe(`<withVideoPlayer> snapshots:`, () => {
     })
 
     const tree = renderer.create(<MockComponentWrapped isActive={true} />)
+      .toJSON()
 
     expect(tree).toMatchSnapshot()
   })
