@@ -40,7 +40,7 @@ describe(`<MovieCard> snapshots:`, () => {
 
     const MovieCardWrapped = withVideoPlayer(MovieCard)
 
-    const tree = renderer.create(<MovieCardWrapped movie={movie} onMouseEnter={() => {}} />)
+    const tree = renderer.create(<MovieCardWrapped isActive={false} movie={movie} onMouseEnter={() => {}} />)
       .toJSON()
 
     expect(tree).toMatchSnapshot()

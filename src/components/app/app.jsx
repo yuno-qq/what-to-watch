@@ -1,4 +1,5 @@
 import React from "react"
+import {compose} from "redux"
 
 import MoviesList from "../../containers/movies-list"
 import GenreTabs from "../../containers/genre-tabs"
@@ -7,7 +8,7 @@ import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx"
 import withVideoMovie from "../../hocs/with-video-movie/with-video-movie.jsx"
 
 
-const MoviesListWrapped = withActiveItem(withVideoMovie(MoviesList))
+const MoviesListWrapped = compose(withActiveItem, withVideoMovie)(MoviesList)
 
 const App = () => {
   return (

@@ -11,6 +11,10 @@ import App from "../app/app.jsx"
 
 import MoviesList from "../../containers/movies-list"
 
+import withVideoMovie from "../../hocs/with-video-movie/with-video-movie.jsx"
+
+
+const MoviesListWrapped = withVideoMovie(MoviesList)
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -53,7 +57,7 @@ describe(`<ShowMore> click CONNECTED`, () => {
 
     const wrapper = mount(
         <Provider store={store}>
-          <MoviesList />
+          <MoviesListWrapped />
         </Provider>
     )
 

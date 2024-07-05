@@ -5,6 +5,10 @@ import {describe, test, expect, beforeEach} from "@jest/globals"
 
 import VideoPlayer from "./video-player.jsx"
 
+import withPlayLoad from "../../hocs/with-play-load/with-play-load"
+
+
+const VideoPlayerWrapped = withPlayLoad(VideoPlayer)
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -22,7 +26,7 @@ describe(`<VideoPlayer> play`, () => {
       previewSrc: `/black-sunday-preview`,
     }
 
-    const wrapper = mount(<VideoPlayer
+    const wrapper = mount(<VideoPlayerWrapped
       imageSrc={videoData.imageSrc}
       previewSrc={videoData.previewSrc}/>)
 
@@ -56,7 +60,7 @@ describe(`<VideoPlayer> play`, () => {
       previewSrc: `/black-sunday-preview`,
     }
 
-    const wrapper = mount(<VideoPlayer
+    const wrapper = mount(<VideoPlayerWrapped
       imageSrc={videoData.imageSrc}
       previewSrc={videoData.previewSrc}
       shouldPlay={true}/>)

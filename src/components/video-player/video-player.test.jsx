@@ -13,6 +13,9 @@ describe(`<VideoPlayer> snapshots:`, () => {
     }
 
     const tree = renderer.create(<VideoPlayer
+      isLoading={true}
+      isPlaying={false}
+      setIsLoading={() => {}}
       imageSrc={videoData.imageSrc}
       previewSrc={videoData.previewSrc}
     />).toJSON()

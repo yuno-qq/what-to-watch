@@ -43,7 +43,7 @@ describe(`<withVideoMovie> snapshots:`, () => {
       )
     })
 
-    const tree = renderer.create(<MockComponentWrapped />)
+    const tree = renderer.create(<MockComponentWrapped setActiveItem={() => {}} />)
       .toJSON()
 
     expect(tree).toMatchSnapshot()

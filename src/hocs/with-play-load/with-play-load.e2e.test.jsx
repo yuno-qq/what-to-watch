@@ -18,7 +18,7 @@ describe(`<withPlayLoad> change state`, () => {
       )
     })
 
-    const wrapper = mount(<MockComponentWrapped />)
+    const wrapper = mount(<MockComponentWrapped setActiveItem={() => {}} />)
 
     expect(wrapper.state(`isPlaying`)).toBe(false)
 
@@ -38,7 +38,7 @@ describe(`<withPlayLoad> change state`, () => {
       )
     })
 
-    const wrapper = mount(<MockComponentWrapped />)
+    const wrapper = mount(<MockComponentWrapped setActiveItem={() => {}} />)
 
     expect(wrapper.state(`isLoading`)).toBe(true)
 

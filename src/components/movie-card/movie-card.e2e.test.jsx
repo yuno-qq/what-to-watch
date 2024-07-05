@@ -4,8 +4,11 @@ import Adapter from "@cfaester/enzyme-adapter-react-18"
 import {describe, test, expect, beforeEach} from "@jest/globals"
 
 import MovieCard from "./movie-card.jsx"
-import VideoPlayer from "../video-player/video-player.jsx"
 
+import withVideoPlayer from "../../hocs/with-video-player/with-video-player.jsx"
+
+
+const MovieCardWrapped = withVideoPlayer(MovieCard)
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -38,7 +41,8 @@ describe(`<MovieCard> hovers`, () => {
     const wrapper = mount(<MovieCard
       movie={movie}
       onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}/>)
+      onMouseLeave={onMouseLeave}
+      renderItem={() => <div></div>} />)
 
     const firstCard = wrapper.find(`.small-movie-card`).at(0)
 
@@ -68,10 +72,11 @@ describe(`<MovieCard> hovers`, () => {
       },
     }
 
-    const wrapper = mount(<MovieCard
+    const wrapper = mount(<MovieCardWrapped
+      isActive={false}
       movie={movie} />)
 
-    const videoWrapper = wrapper.find(VideoPlayer)
+    const videoWrapper = wrapper.find(`WithPlayLoad`)
 
     act(() => {
       videoWrapper.setState({
@@ -133,10 +138,11 @@ describe(`<MovieCard> hovers`, () => {
       },
     }
 
-    const wrapper = mount(<MovieCard
+    const wrapper = mount(<MovieCardWrapped
+      isActive={false}
       movie={movie} />)
 
-    const videoWrapper = wrapper.find(VideoPlayer)
+    const videoWrapper = wrapper.find(`WithPlayLoad`)
 
     act(() => {
       videoWrapper.setState({
@@ -187,10 +193,11 @@ describe(`<MovieCard> hovers`, () => {
       },
     }
 
-    const wrapper = mount(<MovieCard
+    const wrapper = mount(<MovieCardWrapped
+      isActive={false}
       movie={movie} />)
 
-    const videoWrapper = wrapper.find(VideoPlayer)
+    const videoWrapper = wrapper.find(`WithPlayLoad`)
 
     act(() => {
       videoWrapper.setState({

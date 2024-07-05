@@ -4,11 +4,16 @@ import Adapter from "@cfaester/enzyme-adapter-react-18"
 import {describe, test, expect, beforeEach} from "@jest/globals"
 import {Provider} from "react-redux"
 import configureStore from "redux-mock-store"
+import {compose} from "redux"
 
 import MoviesList from "./movies-list.jsx"
 import MovieCard from "../movie-card/movie-card.jsx"
-import VideoPlayer from "../video-player/video-player.jsx"
 
+import withVideoMovie from "../../hocs/with-video-movie/with-video-movie.jsx"
+import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx"
+
+
+const MoviesListWrapped = compose(withActiveItem, withVideoMovie)(MoviesList)
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -99,17 +104,19 @@ describe(`<MovieList> mouseenter and mouseleave`, () => {
 
     const wrapper = mount(
         <Provider store={store}>
-          <MoviesList showingMoviesCount={4} movies={movies}/>
+          <MoviesListWrapped showingMoviesCount={4}
+            movies={movies}
+          />
         </Provider>
-    ).find(MoviesList)
+    ).find(`WithActiveItem`)
 
     const firstMovieWrapper = wrapper.find(MovieCard).at(0)
     const firstMovie = firstMovieWrapper.find(`.small-movie-card`)
-    const firstVideoWrapper = firstMovieWrapper.find(VideoPlayer)
+    const firstVideoWrapper = firstMovieWrapper.find(`WithPlayLoad`)
 
     const secondMovieWrapper = wrapper.find(MovieCard).at(1)
     const secondMovie = secondMovieWrapper.find(`.small-movie-card`)
-    const secondVideoWrapper = secondMovieWrapper.find(VideoPlayer)
+    const secondVideoWrapper = secondMovieWrapper.find(`WithPlayLoad`)
 
     act(() => {
       firstVideoWrapper.setState({
@@ -133,7 +140,7 @@ describe(`<MovieList> mouseenter and mouseleave`, () => {
       jest.advanceTimersByTime(1100)
     })
 
-    expect(wrapper.state(`activeMovie`)).toEqual(movies[0])
+    expect(wrapper.state(`activeItem`)).toEqual(movies[0])
     expect(HTMLMediaElement.prototype.play).toHaveBeenCalledTimes(1)
     expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(0)
 
@@ -145,7 +152,7 @@ describe(`<MovieList> mouseenter and mouseleave`, () => {
       preventDefault
     })
 
-    expect(wrapper.state(`activeMovie`)).toBeNull()
+    expect(wrapper.state(`activeItem`)).toBeNull()
     expect(HTMLMediaElement.prototype.play).toHaveBeenCalledTimes(0)
     expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(1)
 
@@ -161,7 +168,7 @@ describe(`<MovieList> mouseenter and mouseleave`, () => {
       jest.advanceTimersByTime(1100)
     })
 
-    expect(wrapper.state(`activeMovie`)).toEqual(movies[1])
+    expect(wrapper.state(`activeItem`)).toEqual(movies[1])
     expect(HTMLMediaElement.prototype.play).toHaveBeenCalledTimes(1)
     expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(0)
 
@@ -177,7 +184,7 @@ describe(`<MovieList> mouseenter and mouseleave`, () => {
       jest.advanceTimersByTime(1100)
     })
 
-    expect(wrapper.state(`activeMovie`)).toEqual(movies[0])
+    expect(wrapper.state(`activeItem`)).toEqual(movies[0])
     expect(HTMLMediaElement.prototype.play).toHaveBeenCalledTimes(1)
     expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(1)
   })
