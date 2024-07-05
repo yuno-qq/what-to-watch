@@ -31,8 +31,7 @@ class MoviesList extends PureComponent {
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
   showingMoviesCount: PropTypes.number.isRequired,
-  activeItem: PropTypes.object,
-  setActiveItem: PropTypes.func.isRequired
+  renderItems: PropTypes.func.isRequired
 }
 
 

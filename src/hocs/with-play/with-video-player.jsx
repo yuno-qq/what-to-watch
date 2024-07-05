@@ -3,6 +3,7 @@ import React, {PureComponent} from 'react'
 import VideoPlayer from "../../components/video-player/video-player.jsx"
 
 import withPlayLoad from "../with-play-load/with-play-load.jsx"
+import {PropTypes} from "prop-types"
 
 
 const VideoPlayerWrapped = withPlayLoad(VideoPlayer)
@@ -72,6 +73,10 @@ const withVideoPlayer = (Component) => {
           shouldPlay={isPlaying}/>
       )
     }
+  }
+
+  WithVideoPlayer.propTypes = {
+    isActive: PropTypes.bool.isRequired,
   }
 
   return WithVideoPlayer

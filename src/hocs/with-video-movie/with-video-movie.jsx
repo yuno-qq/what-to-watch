@@ -1,4 +1,6 @@
 import React, {PureComponent} from 'react'
+import PropTypes from "prop-types"
+
 
 import MovieCard from "../../components/movie-card/movie-card.jsx"
 
@@ -55,6 +57,11 @@ const withVideoMovie = (Component) => {
 
       setActiveItem(null)
     }
+  }
+
+  WithVideoMovie.propTypes = {
+    activeItem: PropTypes.object,
+    setActiveItem: PropTypes.func.isRequired
   }
 
   return WithVideoMovie

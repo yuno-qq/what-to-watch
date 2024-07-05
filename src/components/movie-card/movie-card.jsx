@@ -60,9 +60,7 @@ MovieCard.propTypes = {
   }).isRequired,
   onMouseEnter: PropTypes.func,
   onMouseLeave: PropTypes.func,
-  isActive: PropTypes.bool,
-  isPlaying: PropTypes.bool.isRequired,
-  setIsPlaying: PropTypes.func.isRequired
+  renderItem: PropTypes.func.isRequired
 }
 
 
