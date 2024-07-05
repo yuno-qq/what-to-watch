@@ -3,7 +3,7 @@ import React from "react"
 import MoviesList from "../../containers/movies-list"
 import GenreTabs from "../../containers/genre-tabs"
 
-import withActiveItem from "../../hocs/with-active-item.jsx"
+import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx"
 
 
 const MoviesListWrapped = withActiveItem(MoviesList)

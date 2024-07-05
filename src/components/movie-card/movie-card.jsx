@@ -8,22 +8,15 @@ class MovieCard extends PureComponent {
   constructor(props) {
     super(props)
 
-    this.state = {
-      isPlaying: false,
-    }
-
     this._TIME_BEFORE_PLAYING = 1000
     this._playingTimeout = null
   }
 
   render() {
     const {
-      movie
-    } = this.props
-
-    const {
+      movie,
       isPlaying
-    } = this.state
+    } = this.props
 
     return (
       <article className="small-movie-card catalog__movies-card"
@@ -44,22 +37,19 @@ class MovieCard extends PureComponent {
 
   componentDidUpdate() {
     const {
-      isActive
+      isActive,
+      setIsPlaying = () => {}
     } = this.props
 
     if (isActive) {
       this._playingTimeout = setTimeout(() => {
-        this.setState({
-          isPlaying: true
-        })
+        setIsPlaying(true)
       }, this._TIME_BEFORE_PLAYING)
 
       return
     }
 
-    this.setState({
-      isPlaying: false
-    }, () => {
+    setIsPlaying(false, () => {
       if (this._playingTimeout) {
         clearTimeout(this._playingTimeout)
       }

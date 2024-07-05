@@ -5,6 +5,10 @@ import MovieCard from "../movie-card/movie-card.jsx"
 
 import ShowMore from "../../containers/show-more"
 
+import withPlay from "../../hocs/with-play/with-play.jsx"
+
+
+const MovieCardWrapped = withPlay(MovieCard)
 
 class MoviesList extends PureComponent {
   constructor(props) {
@@ -25,7 +29,7 @@ class MoviesList extends PureComponent {
       <>
         <div className="catalog__movies-list">
           {movies.slice(0, showingMoviesCount).map((movie, i) => {
-            return <MovieCard key={`movie-${i}`}
+            return <MovieCardWrapped key={`movie-${i}`}
               movie={movie}
               isActive={movie === activeItem}
               onMouseEnter={this._movieCardMouseEnterHandler}
