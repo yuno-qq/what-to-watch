@@ -1,7 +1,6 @@
 import React, {PureComponent} from 'react'
 import PropTypes from "prop-types"
 
-
 import MovieCard from "../../components/movie-card/movie-card.jsx"
 
 import withVideoPlayer from "../with-video-player/with-video-player.jsx"
