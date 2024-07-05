@@ -10,7 +10,7 @@ Enzyme.configure({
   adapter: new Adapter()
 })
 
-describe(`<withActiveItem> snapshots:`, () => {
+describe(`<withActiveItem> change state:`, () => {
   test(`should change activeItem`, () => {
     const MockComponentWrapped = withActiveItem((props) => {
       const {
@@ -26,13 +26,13 @@ describe(`<withActiveItem> snapshots:`, () => {
 
     const wrapper = mount(<MockComponentWrapped/>)
 
-    expect(wrapper.find(`WithActiveItem`).state(`activeItem`)).toBeNull()
+    expect(wrapper.state(`activeItem`)).toBeNull()
 
     let btn = wrapper.find(`button`)
     btn.simulate(`click`, {
       preventDefault: () => {}
     })
 
-    expect(wrapper.find(`WithActiveItem`).state(`activeItem`)).toEqual({test: `test`})
+    expect(wrapper.state(`activeItem`)).toEqual({test: `test`})
   })
 })
