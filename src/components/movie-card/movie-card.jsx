@@ -1,25 +1,16 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 
-import VideoPlayer from "../video-player/video-player.jsx"
-
-import withPlayLoad from "../../hocs/with-play-load/with-play-load.jsx"
-
-
-const VideoPlayerWrapped = withPlayLoad(VideoPlayer)
 
 class MovieCard extends PureComponent {
   constructor(props) {
     super(props)
-
-    this._TIME_BEFORE_PLAYING = 1000
-    this._playingTimeout = null
   }
 
   render() {
     const {
       movie,
-      isPlaying
+      renderItem = () => {}
     } = this.props
 
     return (
@@ -28,37 +19,13 @@ class MovieCard extends PureComponent {
         onMouseLeave={() => this._cardMouseLeaveHandler()}>
 
         <div className="small-movie-card__image">
-          <VideoPlayerWrapped imageSrc={movie.imageSrc}
-            previewSrc={movie.previewSrc}
-            shouldPlay={isPlaying}/>
+          {renderItem(movie)}
         </div>
         <h3 className="small-movie-card__title">
           <a className="small-movie-card__link" href={movie.url}>{movie.name}</a>
         </h3>
       </article>
     )
-  }
-
-  componentDidUpdate() {
-    const {
-      isActive,
-      setIsPlaying = () => {}
-    } = this.props
-
-    if (isActive) {
-      this._playingTimeout = setTimeout(() => {
-        setIsPlaying(true)
-      }, this._TIME_BEFORE_PLAYING)
-
-      return
-    }
-
-    setIsPlaying(false, () => {
-      if (this._playingTimeout) {
-        clearTimeout(this._playingTimeout)
-      }
-      this._playingTimeout = null
-    })
   }
 
   _cardMouseEnterHandler() {

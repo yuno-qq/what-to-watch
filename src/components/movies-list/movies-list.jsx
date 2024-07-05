@@ -5,10 +5,10 @@ import MovieCard from "../movie-card/movie-card.jsx"
 
 import ShowMore from "../../containers/show-more"
 
-import withPlay from "../../hocs/with-play/with-play.jsx"
+import withVideoPlayer from "../../hocs/with-play/with-video-player.jsx"
 
 
-const MovieCardWrapped = withPlay(MovieCard)
+const MovieCardWrapped = withVideoPlayer(MovieCard)
 
 class MoviesList extends PureComponent {
   constructor(props) {
