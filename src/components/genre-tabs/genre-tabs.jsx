@@ -1,40 +1,34 @@
-import React, {PureComponent} from 'react'
+import React from 'react'
 import PropTypes from "prop-types"
 
 
-class GenreTabs extends PureComponent {
-  constructor(props) {
-    super(props)
-  }
+const GenreTabs = (props) => {
+  const {
+    genres,
+    activeGenre,
+    onClickTab
+  } = props
 
-  render() {
-    const {
-      genres,
-      activeGenre,
-      onClickTab
-    } = this.props
+  return (
+    <ul className="catalog__genres-list">
+      {genres.map((genre) => {
+        return (
+          <li key={genre.id} className={`catalog__genres-item ${activeGenre.id === genre.id ? `catalog__genres-item--active` : ``}`}>
+            <a onClick={(evt) => {
+              evt.preventDefault()
 
-    return (
-      <ul className="catalog__genres-list">
-        {genres.map((genre) => {
-          return (
-            <li key={genre.id} className={`catalog__genres-item ${activeGenre.id === genre.id ? `catalog__genres-item--active` : ``}`}>
-              <a onClick={(evt) => {
-                evt.preventDefault()
+              if (activeGenre.id === genre.id) {
+                return
+              }
 
-                if (activeGenre.id === genre.id) {
-                  return
-                }
-
-                onClickTab(genre)
-              }}
-              href="#" className="catalog__genres-link">{genre.name}</a>
-            </li>
-          )
-        })}
-      </ul>
-    )
-  }
+              onClickTab(genre)
+            }}
+            href="#" className="catalog__genres-link">{genre.name}</a>
+          </li>
+        )
+      })}
+    </ul>
+  )
 }
 
 GenreTabs.propTypes = {
