@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 
 import VideoPlayer from "../video-player/video-player.jsx"
 
+import withPlayLoad from "../../hocs/with-play-load/with-play-load.jsx"
+
+
+const VideoPlayerWrapped = withPlayLoad(VideoPlayer)
 
 class MovieCard extends PureComponent {
   constructor(props) {
@@ -24,7 +28,7 @@ class MovieCard extends PureComponent {
         onMouseLeave={() => this._cardMouseLeaveHandler()}>
 
         <div className="small-movie-card__image">
-          <VideoPlayer imageSrc={movie.imageSrc}
+          <VideoPlayerWrapped imageSrc={movie.imageSrc}
             previewSrc={movie.previewSrc}
             shouldPlay={isPlaying}/>
         </div>

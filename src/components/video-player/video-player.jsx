@@ -6,26 +6,7 @@ class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props)
 
-    this.state = {
-      isLoading: true,
-      isPlaying: false
-    }
-
     this._videoRef = createRef()
-  }
-
-  static getDerivedStateFromProps(props) {
-    const {
-      shouldPlay
-    } = props
-
-    if (typeof shouldPlay === `undefined`) {
-      return null
-    }
-
-    return {
-      isPlaying: shouldPlay
-    }
   }
 
   render() {
@@ -50,7 +31,7 @@ class VideoPlayer extends PureComponent {
     const {
       isPlaying,
       isLoading
-    } = this.state
+    } = this.props
 
     if (isLoading && isPlaying) {
       return
@@ -64,15 +45,19 @@ class VideoPlayer extends PureComponent {
   }
 
   _videoCanPlayHandler() {
-    this.setState({
-      isLoading: false
-    })
+    const {
+      setIsLoading = () => {}
+    } = this.props
+
+    setIsLoading(false)
   }
 
   _videoWaitingHandler() {
-    this.setState({
-      isLoading: true
-    })
+    const {
+      setIsLoading = () => {}
+    } = this.props
+
+    setIsLoading(true)
   }
 }
 
