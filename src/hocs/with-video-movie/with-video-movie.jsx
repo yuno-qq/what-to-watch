@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 
 import MovieCard from "../../components/movie-card/movie-card.jsx"
 
-import withVideoPlayer from "../with-play/with-video-player.jsx"
+import withVideoPlayer from "../with-video-player/with-video-player.jsx"
 
 
 const MovieCardWrapped = withVideoPlayer(MovieCard)
