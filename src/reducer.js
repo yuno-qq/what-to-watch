@@ -1,4 +1,4 @@
-import {createStore} from "redux"
+import {createStore, applyMiddleware, compose} from "redux"
 
 import moviesData from "./mocks/movies.jsx"
 import {defaultGenre} from "./utils"
@@ -84,7 +84,8 @@ const reducer = (state = initialState, action) => {
   return state
 }
 
-const store = createStore(reducer)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(reducer, composeEnhancers(applyMiddleware()))
 
 
 export {
