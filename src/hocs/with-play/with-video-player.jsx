@@ -31,7 +31,7 @@ const withVideoPlayer = (Component) => {
         <Component
           {...this.props}
           isPlaying={isPlaying}
-          renderItem={(movie) => this._renderItem(movie)}
+          renderItem={this._renderItem}
         />
       )
     }
