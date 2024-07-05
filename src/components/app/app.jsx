@@ -3,6 +3,10 @@ import React from "react"
 import MoviesList from "../../containers/movies-list"
 import GenreTabs from "../../containers/genre-tabs"
 
+import withActiveItem from "../../hocs/with-active-item.jsx"
+
+
+const MoviesListWrapped = withActiveItem(MoviesList)
 
 const App = () => {
   return (
@@ -67,7 +71,7 @@ const App = () => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenreTabs />
-          <MoviesList />
+          <MoviesListWrapped />
         </section>
 
         <footer className="page-footer">
