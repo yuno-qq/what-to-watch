@@ -10,30 +10,35 @@ class VideoPlayer extends PureComponent {
 
     this._videoCanPlayHandler = this._videoCanPlayHandler.bind(this)
     this._videoWaitingHandler = this._videoWaitingHandler.bind(this)
+    this._videoTimeUpdateHandler = this._videoTimeUpdateHandler.bind(this)
   }
 
   render() {
     const {
       imageSrc,
-      previewSrc
+      videoSrc,
+      isMooted = true,
+      isLooped = true
     } = this.props
 
     return (
       <video
         onCanPlay={this._videoCanPlayHandler}
         onWaiting={this._videoWaitingHandler}
+        onTimeUpdate={this._videoTimeUpdateHandler}
         ref={this._videoRef}
-        src={previewSrc}
+        src={videoSrc}
         poster={imageSrc}
-        muted
-        loop></video>
+        muted={isMooted}
+        loop={isLooped}></video>
     )
   }
 
   componentDidUpdate() {
     const {
       isPlaying,
-      isLoading
+      isLoading,
+      isLoadInsteadPause = true
     } = this.props
 
     if (isLoading && isPlaying) {
@@ -43,7 +48,11 @@ class VideoPlayer extends PureComponent {
     if (isPlaying) {
       this._videoRef.current.play()
     } else {
-      this._videoRef.current.load()
+      if (isLoadInsteadPause) {
+        this._videoRef.current.load()
+      } else {
+        this._videoRef.current.pause()
+      }
     }
   }
 
@@ -61,6 +70,14 @@ class VideoPlayer extends PureComponent {
     } = this.props
 
     setIsLoading(true)
+  }
+
+  _videoTimeUpdateHandler({currentTime}) {
+    const {
+      setCurrentTime = () => {}
+    } = this.props
+
+    setCurrentTime(currentTime)
   }
 }
 

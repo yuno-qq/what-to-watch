@@ -4,16 +4,25 @@ import React, {PureComponent} from "react"
 class FullVideoPlayer extends PureComponent {
   constructor(props) {
     super(props)
+
+    this._playBtnClickHandler = this._playBtnClickHandler.bind(this)
   }
 
   render() {
     const {
-      movie
+      movie,
+      renderItem
     } = this.props
+
+    const {
+      name,
+      imageSrc,
+      videoSrc,
+    } = movie
 
     return (
       <div className="player">
-        <video src={movie.videoSrc} className="player__video" poster={movie.imageSrc}></video>
+        {renderItem(imageSrc, videoSrc)}
 
         <button type="button" className="player__exit">Exit</button>
 
@@ -27,13 +36,13 @@ class FullVideoPlayer extends PureComponent {
           </div>
 
           <div className="player__controls-row">
-            <button type="button" className="player__play">
+            <button onClick={this._playBtnClickHandler} type="button" className="player__play">
               <svg viewBox="0 0 19 19" width="19" height="19">
                 <use xlinkHref="#play-s"></use>
               </svg>
               <span>Play</span>
             </button>
-            <div className="player__name">{movie.name}</div>
+            <div className="player__name">{name}</div>
 
             <button type="button" className="player__full-screen">
               <svg viewBox="0 0 27 27" width="27" height="27">
@@ -45,6 +54,15 @@ class FullVideoPlayer extends PureComponent {
         </div>
       </div>
     )
+  }
+
+  _playBtnClickHandler() {
+    const {
+      isPlaying,
+      setIsPlaying
+    } = this.props
+
+    setIsPlaying(!isPlaying)
   }
 }
 
