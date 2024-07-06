@@ -4,7 +4,7 @@ import {Provider} from "react-redux"
 
 import {store} from "./reducer"
 
-import App from "./components/app/app.jsx"
+import App from "./containers/app"
 
 
 const init = () => {

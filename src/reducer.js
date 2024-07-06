@@ -11,7 +11,8 @@ const initialState = {
   movies: moviesData,
   showingMoviesCount: MOVIES_ON_PAGE_COUNT > moviesData.length
     ? moviesData.length
-    : MOVIES_ON_PAGE_COUNT
+    : MOVIES_ON_PAGE_COUNT,
+  isFullVideoOpened: false
 }
 
 const filterMoviesByGenre = (genre, movies) => {
@@ -52,6 +53,13 @@ const ActionCreator = {
       type: `INCREMENT_MOVIES_COUNT`,
       payload: incrementer
     }
+  },
+
+  toggleFullVideo: (flag) => {
+    return {
+      type: `TOGGLE_FULL_VIDEO`,
+      payload: flag
+    }
   }
 }
 
@@ -75,6 +83,11 @@ const reducer = (state = initialState, action) => {
     case `INCREMENT_MOVIES_COUNT`:
       return Object.assign({}, state, {
         showingMoviesCount: state.showingMoviesCount + action.payload
+      })
+
+    case `TOGGLE_FULL_VIDEO`:
+      return Object.assign({}, state, {
+        isFullVideoOpened: action.payload
       })
 
     case `FULL_RESET`:
