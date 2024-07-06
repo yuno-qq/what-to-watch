@@ -106,7 +106,11 @@ describe(`<MoviesList> snapshots:`, () => {
 
     const tree = renderer.create(
         <Provider store={store}>
-          <MoviesListWrapped movies={movies} showingMoviesCount={4} />
+          <MoviesListWrapped
+            movies={movies}
+            showingMoviesCount={4}
+            setActiveItem={() => {}}
+          />
         </Provider>
     ).toJSON()
 

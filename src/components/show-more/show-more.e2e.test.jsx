@@ -57,7 +57,7 @@ describe(`<ShowMore> click CONNECTED`, () => {
 
     const wrapper = mount(
         <Provider store={store}>
-          <MoviesListWrapped />
+          <MoviesListWrapped setActiveItem={() => {}} />
         </Provider>
     )
 

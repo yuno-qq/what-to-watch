@@ -24,7 +24,7 @@ describe(`<withVideoPlayer> change state isPlaying`, () => {
       return <div className="MOCK_COMPONENT"></div>
     })
 
-    const wrapper = mount(<MockComponentWrapped />)
+    const wrapper = mount(<MockComponentWrapped isActive={false} />)
 
     let block
     findBlock()
