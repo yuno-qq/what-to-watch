@@ -7,6 +7,9 @@ class VideoPlayer extends PureComponent {
     super(props)
 
     this._videoRef = createRef()
+
+    this._videoCanPlayHandler = this._videoCanPlayHandler.bind(this)
+    this._videoWaitingHandler = this._videoWaitingHandler.bind(this)
   }
 
   render() {
@@ -17,8 +20,8 @@ class VideoPlayer extends PureComponent {
 
     return (
       <video
-        onCanPlay={() => this._videoCanPlayHandler()}
-        onWaiting={() => this._videoWaitingHandler()}
+        onCanPlay={this._videoCanPlayHandler}
+        onWaiting={this._videoWaitingHandler}
         ref={this._videoRef}
         src={previewSrc}
         poster={imageSrc}

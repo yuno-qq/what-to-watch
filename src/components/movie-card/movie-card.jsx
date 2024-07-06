@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
 class MovieCard extends PureComponent {
   constructor(props) {
     super(props)
+
+    this._cardMouseEnterHandler = this._cardMouseEnterHandler.bind(this)
+    this._cardMouseLeaveHandler = this._cardMouseLeaveHandler.bind(this)
   }
 
   render() {
@@ -15,8 +18,8 @@ class MovieCard extends PureComponent {
 
     return (
       <article className="small-movie-card catalog__movies-card"
-        onMouseEnter={() => this._cardMouseEnterHandler()}
-        onMouseLeave={() => this._cardMouseLeaveHandler()}>
+        onMouseEnter={this._cardMouseEnterHandler}
+        onMouseLeave={this._cardMouseLeaveHandler}>
 
         <div className="small-movie-card__image">
           {renderItem(movie)}
