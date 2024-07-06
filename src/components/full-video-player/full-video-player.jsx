@@ -11,7 +11,8 @@ class FullVideoPlayer extends PureComponent {
   render() {
     const {
       movie,
-      renderItem
+      renderItem,
+      isPlaying
     } = this.props
 
     const {
@@ -38,7 +39,8 @@ class FullVideoPlayer extends PureComponent {
           <div className="player__controls-row">
             <button onClick={this._playBtnClickHandler} type="button" className="player__play">
               <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref="#play-s"></use>
+                {isPlaying ? (<use xlinkHref="#pause"></use>)
+                  : (<use xlinkHref="#play-s"></use>)}
               </svg>
               <span>Play</span>
             </button>
