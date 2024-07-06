@@ -16,17 +16,18 @@ const withFullVideoPlayer = (Component) => {
 
       this.state = {
         isPlaying: true,
-        isFullWidth: false
+        isFullScreen: false
       }
 
       this._renderItem = this._renderItem.bind(this)
       this._setIsPlaying = this._setIsPlaying.bind(this)
-      this._getIsPlaying = this._getIsPlaying.bind(this)
+      this._setIsFullScreen = this._setIsFullScreen.bind(this)
     }
 
     render() {
       const {
-        isPlaying
+        isPlaying,
+        isFullScreen
       } = this.state
 
       return (
@@ -34,14 +35,17 @@ const withFullVideoPlayer = (Component) => {
           {...this.props}
           renderItem={this._renderItem}
           setIsPlaying={this._setIsPlaying}
+          setIsFullScreen={this._setIsFullScreen}
           isPlaying={isPlaying}
+          isFullScreen={isFullScreen}
         />
       )
     }
 
     _renderItem(imageSrc, videoSrc) {
       const {
-        isPlaying
+        isPlaying,
+        isFullScreen,
       } = this.state
 
       return (
@@ -52,6 +56,9 @@ const withFullVideoPlayer = (Component) => {
           isLooped={false}
           isLoadInsteadPause={false}
           shouldPlay={isPlaying}
+          setIsPlaying={this._setIsPlaying}
+          isFullScreen={isFullScreen}
+          setIsFullScreen={this._setIsFullScreen}
         />
       )
     }
@@ -62,12 +69,10 @@ const withFullVideoPlayer = (Component) => {
       })
     }
 
-    _getIsPlaying() {
-      const {
-        isPlaying
-      } = this.state
-
-      return isPlaying
+    _setIsFullScreen(flag) {
+      this.setState({
+        isFullScreen: flag
+      })
     }
   }
 

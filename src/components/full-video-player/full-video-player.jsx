@@ -6,6 +6,7 @@ class FullVideoPlayer extends PureComponent {
     super(props)
 
     this._playBtnClickHandler = this._playBtnClickHandler.bind(this)
+    this._screenBtnClickHandler = this._screenBtnClickHandler.bind(this)
   }
 
   render() {
@@ -33,7 +34,7 @@ class FullVideoPlayer extends PureComponent {
               <progress className="player__progress" value="0" max="100"></progress>
               <div className="player__toggler" style={{left: `0%`}}>Toggler</div>
             </div>
-            <div className="player__time-value">1:30:29</div>
+            <div className="player__time-value">-:--:--</div>
           </div>
 
           <div className="player__controls-row">
@@ -46,7 +47,7 @@ class FullVideoPlayer extends PureComponent {
             </button>
             <div className="player__name">{name}</div>
 
-            <button type="button" className="player__full-screen">
+            <button onClick={this._screenBtnClickHandler} type="button" className="player__full-screen">
               <svg viewBox="0 0 27 27" width="27" height="27">
                 <use xlinkHref="#full-screen"></use>
               </svg>
@@ -61,10 +62,19 @@ class FullVideoPlayer extends PureComponent {
   _playBtnClickHandler() {
     const {
       isPlaying,
-      setIsPlaying
+      setIsPlaying = () => {}
     } = this.props
 
     setIsPlaying(!isPlaying)
+  }
+
+  _screenBtnClickHandler() {
+    const {
+      isFullScreen,
+      setIsFullScreen = () => {}
+    } = this.props
+
+    setIsFullScreen(!isFullScreen)
   }
 }
 

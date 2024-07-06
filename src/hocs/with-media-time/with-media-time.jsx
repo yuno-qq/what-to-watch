@@ -22,8 +22,7 @@ const withMediaTime = (Component) => {
       )
     }
 
-    _setCurrentTime(currentTime) {
-      console.log(currentTime)
+    _setCurrentTime() {
     }
   }
 

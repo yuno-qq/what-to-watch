@@ -11,6 +11,9 @@ class VideoPlayer extends PureComponent {
     this._videoCanPlayHandler = this._videoCanPlayHandler.bind(this)
     this._videoWaitingHandler = this._videoWaitingHandler.bind(this)
     this._videoTimeUpdateHandler = this._videoTimeUpdateHandler.bind(this)
+    this._fullScreenChangeHandler = this._fullScreenChangeHandler.bind(this)
+    this._videoPlayHandler = this._videoPlayHandler.bind(this)
+    this._videoPauseHandler = this._videoPauseHandler.bind(this)
   }
 
   render() {
@@ -26,6 +29,8 @@ class VideoPlayer extends PureComponent {
         onCanPlay={this._videoCanPlayHandler}
         onWaiting={this._videoWaitingHandler}
         onTimeUpdate={this._videoTimeUpdateHandler}
+        onPlay={this._videoPlayHandler}
+        onPause={this._videoPauseHandler}
         ref={this._videoRef}
         src={videoSrc}
         poster={imageSrc}
@@ -34,12 +39,20 @@ class VideoPlayer extends PureComponent {
     )
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     const {
       isPlaying,
       isLoading,
+      isFullScreen = false,
       isLoadInsteadPause = true
     } = this.props
+
+    console.log(`isPlaying: `, isPlaying)
+
+    if (!prevProps.isFullScreen && isFullScreen) {
+      this._videoRef.current.requestFullscreen()
+      document.addEventListener(`fullscreenchange`, this._fullScreenChangeHandler)
+    }
 
     if (isLoading && isPlaying) {
       return
@@ -78,6 +91,32 @@ class VideoPlayer extends PureComponent {
     } = this.props
 
     setCurrentTime(currentTime)
+  }
+
+  _videoPlayHandler() {
+    const {
+      setIsPlaying = () => {},
+    } = this.props
+
+    setIsPlaying(true)
+  }
+
+  _videoPauseHandler() {
+    const {
+      setIsPlaying = () => {},
+    } = this.props
+
+    setIsPlaying(false)
+  }
+
+  _fullScreenChangeHandler() {
+    const {
+      isFullScreen,
+      setIsFullScreen = () => {}
+    } = this.props
+
+    document.removeEventListener(`fullscreenchange`, this._fullScreenChangeHandler)
+    setIsFullScreen(!isFullScreen)
   }
 }
 
