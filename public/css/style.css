@@ -997,6 +997,7 @@ main {
   position: relative; }
 
 .player__progress {
+  cursor: pointer;
   -webkit-appearance: none;
   width: 100%;
   background: rgba(255, 251, 231, 0.35);

@@ -26,7 +26,7 @@ const withFullVideoPlayer = (Component) => {
     render() {
       const {
         isPlaying,
-        isFullScreen
+        isFullScreen,
       } = this.state
 
       return (
@@ -49,7 +49,8 @@ const withFullVideoPlayer = (Component) => {
 
       const {
         setDuration,
-        setCurrentTime
+        setCurrentTime,
+        currentTimeByClick
       } = this.props
 
       return (
@@ -65,6 +66,7 @@ const withFullVideoPlayer = (Component) => {
           setIsFullScreen={this._setIsFullScreen}
           setDuration={setDuration}
           setCurrentTime={setCurrentTime}
+          currentTimeByClick={currentTimeByClick}
         />
       )
     }

@@ -7,26 +7,31 @@ const withMediaTime = (Component) => {
       super(props)
 
       this.state = {
+        currentTimeByClick: null,
         currentTime: 0,
         duration: null
       }
 
       this._setCurrentTime = this._setCurrentTime.bind(this)
+      this._setCurrentTimeByClick = this._setCurrentTimeByClick.bind(this)
       this._setDuration = this._setDuration.bind(this)
     }
 
     render() {
       const {
         currentTime,
-        duration
+        duration,
+        currentTimeByClick
       } = this.state
 
       return (
         <Component
           {...this.props}
           currentTime={currentTime}
+          currentTimeByClick={currentTimeByClick}
           duration={duration}
           setCurrentTime={this._setCurrentTime}
+          setCurrentTimeByClick={this._setCurrentTimeByClick}
           setDuration={this._setDuration}
         />
       )
@@ -41,6 +46,12 @@ const withMediaTime = (Component) => {
     _setDuration(duration) {
       this.setState({
         duration
+      })
+    }
+
+    _setCurrentTimeByClick(currentTimeByClick) {
+      this.setState({
+        currentTimeByClick
       })
     }
   }

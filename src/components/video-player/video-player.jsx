@@ -47,7 +47,12 @@ class VideoPlayer extends PureComponent {
       isLoading,
       isFullScreen = false,
       isLoadInsteadPause = true,
+      currentTimeByClick
     } = this.props
+
+    if (currentTimeByClick !== null && currentTimeByClick !== prevProps.currentTimeByClick) {
+      this._videoRef.current.currentTime = currentTimeByClick
+    }
 
     if (!prevProps.isFullScreen && isFullScreen) {
       this._videoRef.current.requestFullscreen()
