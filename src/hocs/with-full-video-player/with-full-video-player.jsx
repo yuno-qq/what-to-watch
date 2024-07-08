@@ -4,10 +4,9 @@ import {compose} from "redux"
 import VideoPlayer from "../../components/video-player/video-player.jsx"
 
 import withPlayLoad from "../../hocs/with-play-load/with-play-load.jsx"
-import withMediaTime from "../../hocs/with-media-time/with-media-time.jsx"
 
 
-const VideoPlayerWrapped = compose(withMediaTime, withPlayLoad)(VideoPlayer)
+const VideoPlayerWrapped = compose(withPlayLoad)(VideoPlayer)
 
 const withFullVideoPlayer = (Component) => {
   class WithFullVideoPlayer extends PureComponent {
@@ -34,10 +33,10 @@ const withFullVideoPlayer = (Component) => {
         <Component
           {...this.props}
           renderItem={this._renderItem}
-          setIsPlaying={this._setIsPlaying}
-          setIsFullScreen={this._setIsFullScreen}
           isPlaying={isPlaying}
           isFullScreen={isFullScreen}
+          setIsPlaying={this._setIsPlaying}
+          setIsFullScreen={this._setIsFullScreen}
         />
       )
     }
@@ -47,6 +46,11 @@ const withFullVideoPlayer = (Component) => {
         isPlaying,
         isFullScreen,
       } = this.state
+
+      const {
+        setDuration,
+        setCurrentTime
+      } = this.props
 
       return (
         <VideoPlayerWrapped
@@ -59,6 +63,8 @@ const withFullVideoPlayer = (Component) => {
           setIsPlaying={this._setIsPlaying}
           isFullScreen={isFullScreen}
           setIsFullScreen={this._setIsFullScreen}
+          setDuration={setDuration}
+          setCurrentTime={setCurrentTime}
         />
       )
     }

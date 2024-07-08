@@ -14,6 +14,7 @@ class VideoPlayer extends PureComponent {
     this._fullScreenChangeHandler = this._fullScreenChangeHandler.bind(this)
     this._videoPlayHandler = this._videoPlayHandler.bind(this)
     this._videoPauseHandler = this._videoPauseHandler.bind(this)
+    this._videoLoadedMetaDataHandler = this._videoLoadedMetaDataHandler.bind(this)
   }
 
   render() {
@@ -31,6 +32,7 @@ class VideoPlayer extends PureComponent {
         onTimeUpdate={this._videoTimeUpdateHandler}
         onPlay={this._videoPlayHandler}
         onPause={this._videoPauseHandler}
+        onLoadedMetadata={this._videoLoadedMetaDataHandler}
         ref={this._videoRef}
         src={videoSrc}
         poster={imageSrc}
@@ -44,10 +46,8 @@ class VideoPlayer extends PureComponent {
       isPlaying,
       isLoading,
       isFullScreen = false,
-      isLoadInsteadPause = true
+      isLoadInsteadPause = true,
     } = this.props
-
-    console.log(`isPlaying: `, isPlaying)
 
     if (!prevProps.isFullScreen && isFullScreen) {
       this._videoRef.current.requestFullscreen()
@@ -69,6 +69,14 @@ class VideoPlayer extends PureComponent {
     }
   }
 
+  _videoLoadedMetaDataHandler() {
+    const {
+      setDuration = () => {}
+    } = this.props
+
+    setDuration(this._videoRef.current.duration)
+  }
+
   _videoCanPlayHandler() {
     const {
       setIsLoading = () => {}
@@ -85,12 +93,12 @@ class VideoPlayer extends PureComponent {
     setIsLoading(true)
   }
 
-  _videoTimeUpdateHandler({currentTime}) {
+  _videoTimeUpdateHandler() {
     const {
       setCurrentTime = () => {}
     } = this.props
 
-    setCurrentTime(currentTime)
+    setCurrentTime(this._videoRef.current.currentTime)
   }
 
   _videoPlayHandler() {

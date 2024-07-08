@@ -1,5 +1,5 @@
 export default {
-  videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
   imageSrc: `https://placehold.co/1900x1000/`,
   name: `Красный дракон`,
   genre: {

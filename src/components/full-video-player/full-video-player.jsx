@@ -9,11 +9,37 @@ class FullVideoPlayer extends PureComponent {
     this._screenBtnClickHandler = this._screenBtnClickHandler.bind(this)
   }
 
+  static _secToHHMMSS(sec) {
+    sec = Math.ceil(sec)
+
+    let hours = Math.floor(sec / 3600)
+    let minutes = Math.floor((sec - (hours * 3600)) / 60)
+    let seconds = sec - (hours * 3600) - (minutes * 60)
+
+    if (minutes < 10) {
+      minutes = `0${minutes}`
+    }
+
+    if (seconds < 10) {
+      seconds = `0${seconds}`
+    }
+
+    let result = `${minutes}:${seconds}`
+
+    if (hours > 0) {
+      result = `${hours}:${result}`
+    }
+
+    return result
+  }
+
   render() {
     const {
       movie,
       renderItem,
-      isPlaying
+      isPlaying,
+      currentTime,
+      duration
     } = this.props
 
     const {
@@ -21,6 +47,10 @@ class FullVideoPlayer extends PureComponent {
       imageSrc,
       videoSrc,
     } = movie
+
+    const hasDuration = duration !== null
+    const currentTimeFormattedValue = hasDuration ? currentTime / duration * 100 : 0
+    const timeFormattedValue = hasDuration ? FullVideoPlayer._secToHHMMSS(duration - currentTime) : `--:--`
 
     return (
       <div className="player">
@@ -31,10 +61,10 @@ class FullVideoPlayer extends PureComponent {
         <div className="player__controls">
           <div className="player__controls-row">
             <div className="player__time">
-              <progress className="player__progress" value="0" max="100"></progress>
-              <div className="player__toggler" style={{left: `0%`}}>Toggler</div>
+              <progress className="player__progress" value={currentTimeFormattedValue} max="100"></progress>
+              <div className="player__toggler" style={{left: `${currentTimeFormattedValue}%`}}>Toggler</div>
             </div>
-            <div className="player__time-value">-:--:--</div>
+            <div className="player__time-value">{timeFormattedValue}</div>
           </div>
 
           <div className="player__controls-row">

@@ -10,12 +10,13 @@ import PlayBtn from "../../containers/play-btn"
 import withActiveItem from "../../hocs/with-active-item/with-active-item.jsx"
 import withVideoMovie from "../../hocs/with-video-movie/with-video-movie.jsx"
 import withFullVideoPlayer from "../../hocs/with-full-video-player/with-full-video-player.jsx"
+import withMediaTime from "../../hocs/with-media-time/with-media-time.jsx"
 
 import movie from "../../mocks/movie"
 
 
 const MoviesListWrapped = compose(withActiveItem, withVideoMovie)(MoviesList)
-const FullVideoPlayerWrapped = compose(withFullVideoPlayer)(FullVideoPlayer)
+const FullVideoPlayerWrapped = compose(withMediaTime, withFullVideoPlayer)(FullVideoPlayer)
 
 const App = (props) => {
   const {
