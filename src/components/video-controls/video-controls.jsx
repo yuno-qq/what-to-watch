@@ -1,14 +1,20 @@
-import React, {PureComponent} from "react"
+import React, {PureComponent, createRef} from "react"
 
 
 class VideoControls extends PureComponent {
   constructor(props) {
     super(props)
 
+    this._toggerRef = createRef()
+
     this._playBtnClickHandler = this._playBtnClickHandler.bind(this)
     this._screenBtnClickHandler = this._screenBtnClickHandler.bind(this)
 
     this._progressBarClickHandler = this._progressBarClickHandler.bind(this)
+
+    this._togglerMouseDownHandler = this._togglerMouseDownHandler.bind(this)
+    this._documentMouseMoveHandler = this._documentMouseMoveHandler.bind(this)
+    this._documentMouseUpHandler = this._documentMouseUpHandler.bind(this)
   }
 
   static _secToHHMMSS(sec) {
@@ -50,8 +56,15 @@ class VideoControls extends PureComponent {
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
-            <progress onClick={this._progressBarClickHandler} className="player__progress" value={currentTimeFormattedValue} max="100"></progress>
-            <div className="player__toggler" style={{left: `${currentTimeFormattedValue}%`}}>Toggler</div>
+            <progress onClick={this._progressBarClickHandler}
+              className="player__progress"
+              value={currentTimeFormattedValue}
+              max="100"></progress>
+
+            <div className="player__toggler"
+              onMouseDown={this._togglerMouseDownHandler}
+              ref={this._toggerRef}
+              style={{left: `${currentTimeFormattedValue}%`}}>Toggler</div>
           </div>
           <div className="player__time-value">{timeFormattedValue}</div>
         </div>
@@ -114,6 +127,20 @@ class VideoControls extends PureComponent {
     } = this.props
 
     setIsFullScreen(!isFullScreen)
+  }
+
+  _togglerMouseDownHandler() {
+    document.addEventListener(`mousemove`, this._documentMouseMoveHandler)
+    document.addEventListener(`mouseup`, this._documentMouseUpHandler)
+  }
+
+  _documentMouseMoveHandler({movementX}) {
+    const $toggler = this._toggerRef.current
+    $toggler.style.left = `${movementX}%`
+  }
+
+  _documentMouseUpHandler() {
+
   }
 }
 

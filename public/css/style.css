@@ -1003,7 +1003,7 @@ main {
   background: rgba(255, 251, 231, 0.35);
   border-radius: 1px;
   border: none;
-  height: 4px;
+  height: 6px;
   display: block; }
   .player__progress::-moz-progress-bar {
     background: #D9CD8D; }
