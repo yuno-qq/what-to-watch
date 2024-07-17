@@ -22,11 +22,13 @@ class VideoPlayer extends PureComponent {
       imageSrc,
       videoSrc,
       isMooted = true,
-      isLooped = true
+      isLooped = true,
+      cssMod = ``
     } = this.props
 
     return (
       <video
+        className={cssMod}
         onCanPlay={this._videoCanPlayHandler}
         onWaiting={this._videoWaitingHandler}
         onTimeUpdate={this._videoTimeUpdateHandler}

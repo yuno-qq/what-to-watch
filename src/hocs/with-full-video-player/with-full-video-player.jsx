@@ -55,6 +55,7 @@ const withFullVideoPlayer = (Component) => {
 
       return (
         <VideoPlayerWrapped
+          cssMod={`player__video`}
           imageSrc={imageSrc}
           videoSrc={videoSrc}
           isMooted={false}
