@@ -10,6 +10,8 @@ const VideoControlsWrapped = withDragging(VideoControls)
 class FullVideoPlayer extends PureComponent {
   constructor(props) {
     super(props)
+
+    this._exitBtnClickHandler = this._exitBtnClickHandler.bind(this)
   }
 
   render() {
@@ -35,7 +37,9 @@ class FullVideoPlayer extends PureComponent {
       <div className="player">
         {renderItem(imageSrc, videoSrc)}
 
-        <button type="button" className="player__exit">Exit</button>
+        <button type="button"
+          className="player__exit"
+          onClick={this._exitBtnClickHandler}>Exit</button>
 
         <VideoControlsWrapped
           name={name}
@@ -49,6 +53,14 @@ class FullVideoPlayer extends PureComponent {
         />
       </div>
     )
+  }
+
+  _exitBtnClickHandler() {
+    const {
+      onExitBtnClick
+    } = this.props
+
+    onExitBtnClick()
   }
 }
 

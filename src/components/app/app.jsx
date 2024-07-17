@@ -1,8 +1,7 @@
 import React from "react"
 import {compose} from "redux"
 
-import FullVideoPlayer from "../full-video-player/full-video-player.jsx"
-
+import FullVideoPlayer from "../../containers/full-video-player"
 import MoviesList from "../../containers/movies-list"
 import GenreTabs from "../../containers/genre-tabs"
 import PlayBtn from "../../containers/play-btn"
