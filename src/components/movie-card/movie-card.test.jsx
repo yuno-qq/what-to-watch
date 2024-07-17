@@ -12,7 +12,7 @@ describe(`<MovieCard> snapshots:`, () => {
     const movie = {
       imageSrc: `https://placehold.co/280x175/EEE/31343C`,
       url: `/`,
-      previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+      videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
       name: `Красный дракон`,
       genre: {
         id: `comedies`,
@@ -30,7 +30,7 @@ describe(`<MovieCard> snapshots:`, () => {
     const movie = {
       imageSrc: `https://placehold.co/280x175/EEE/31343C`,
       url: `/`,
-      previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+      videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
       name: `Красный дракон`,
       genre: {
         id: `comedies`,

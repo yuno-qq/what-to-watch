@@ -24,7 +24,7 @@ describe(`<App> snapshots:`, () => {
           },
           imageSrc: `https://placehold.co/280x175/EEE/31343C`,
           url: `/`,
-          previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+          videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
           name: `Красный дракон`
         },
         {
@@ -34,7 +34,7 @@ describe(`<App> snapshots:`, () => {
           },
           imageSrc: `https://placehold.co/280x175/EEE/31343C`,
           url: `/`,
-          previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+          videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
           name: `Молчание ягнят`
         }
       ],

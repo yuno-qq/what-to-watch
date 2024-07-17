@@ -69,7 +69,7 @@ const withVideoPlayer = (Component) => {
 
       return (
         <VideoPlayerWrapped imageSrc={movie.imageSrc}
-          previewSrc={movie.previewSrc}
+          videoSrc={movie.videoSrc}
           shouldPlay={isPlaying}/>
       )
     }

@@ -54,7 +54,7 @@ describe(`moviesToGenres() test`, () => {
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
         url: `/`,
-        previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+        videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
         name: `Красный дракон`
       },
       {
@@ -64,7 +64,7 @@ describe(`moviesToGenres() test`, () => {
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
         url: `/`,
-        previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+        videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
         name: `Молчание ягнят`
       },
       {
@@ -73,7 +73,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Comedies`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+        videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
         url: `/`,
         name: `Ганнибал`
       },
@@ -83,7 +83,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Comedies`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+        videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
         url: `/`,
         name: `Восхождение Ганнибала`
       },
@@ -93,7 +93,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Crime`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Черное воскресенье`
       },
@@ -103,7 +103,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Crime`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Кари Мора`
       },
@@ -113,7 +113,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Documentary`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Профайлер`
       },
@@ -123,7 +123,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Documentary`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Ящик скиннера`
       },
@@ -133,7 +133,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Documentary`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Клинок молчания`
       },
@@ -143,7 +143,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Dramas`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Азазель`
       },
@@ -153,7 +153,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Dramas`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Турецкий гамбит`
       },
@@ -163,7 +163,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Dramas`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Лефиафан`
       },
@@ -173,7 +173,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Dramas`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Смерть Ахиллеса`
       },
@@ -183,7 +183,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Dramas`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Особые поручения`
       },
@@ -193,7 +193,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Dramas`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Статский советник`
       },
@@ -203,7 +203,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Dramas`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Коронация`
       },
@@ -213,7 +213,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Dramas`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Любовница смерти`
       },
@@ -223,7 +223,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Dramas`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Любовник смерти`
       },
@@ -233,7 +233,7 @@ describe(`moviesToGenres() test`, () => {
           name: `Dramas`,
         },
         imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-        previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+        videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
         url: `/`,
         name: `Алмазная колесница`
       },

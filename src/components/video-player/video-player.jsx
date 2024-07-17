@@ -49,7 +49,7 @@ class VideoPlayer extends PureComponent {
       isLoading,
       isFullScreen = false,
       isLoadInsteadPause = true,
-      currentTimeByClick
+      currentTimeByClick = null
     } = this.props
 
     if (currentTimeByClick !== null) {
@@ -143,7 +143,7 @@ class VideoPlayer extends PureComponent {
 
 VideoPlayer.propTypes = {
   imageSrc: PropTypes.string.isRequired,
-  previewSrc: PropTypes.string.isRequired,
+  videoSrc: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
   setIsLoading: PropTypes.func.isRequired

@@ -9,7 +9,7 @@ describe(`<VideoPlayer> snapshots:`, () => {
   test(`should render "Черное воскресенье"`, () => {
     const videoData = {
       imageSrc: `/black-sunday-image`,
-      previewSrc: `/black-sunday-preview`,
+      videoSrc: `/black-sunday-preview`,
     }
 
     const tree = renderer.create(<VideoPlayer
@@ -17,7 +17,7 @@ describe(`<VideoPlayer> snapshots:`, () => {
       isPlaying={false}
       setIsLoading={() => {}}
       imageSrc={videoData.imageSrc}
-      previewSrc={videoData.previewSrc}
+      videoSrc={videoData.videoSrc}
     />).toJSON()
 
     expect(tree).toMatchSnapshot()

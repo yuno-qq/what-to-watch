@@ -6,7 +6,7 @@ export default [
     },
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
     url: `/`,
-    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     name: `Красный дракон`
   },
   {
@@ -17,7 +17,7 @@ export default [
     id: `111111`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
     url: `/`,
-    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     name: `Молчание ягнят`
   },
   {
@@ -27,7 +27,7 @@ export default [
     },
     id: `111222`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     url: `/`,
     name: `Ганнибал`
   },
@@ -38,7 +38,7 @@ export default [
     },
     id: `111333`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     url: `/`,
     name: `Восхождение Ганнибала`
   },
@@ -49,7 +49,7 @@ export default [
     },
     id: `111444`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Черное воскресенье`
   },
@@ -60,7 +60,7 @@ export default [
     },
     id: `111555`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Кари Мора`
   },
@@ -71,7 +71,7 @@ export default [
     },
     id: `111666`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Профайлер`
   },
@@ -82,7 +82,7 @@ export default [
     },
     id: `111777`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Ящик скиннера`
   },
@@ -93,7 +93,7 @@ export default [
     },
     id: `111888`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Клинок молчания`
   },
@@ -104,7 +104,7 @@ export default [
     },
     id: `111999`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Азазель`
   },
@@ -115,7 +115,7 @@ export default [
     },
     id: `222111`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Турецкий гамбит`
   },
@@ -126,7 +126,7 @@ export default [
     },
     id: `222222`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Лефиафан`
   },
@@ -137,7 +137,7 @@ export default [
     },
     id: `222333`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Смерть Ахиллеса`
   },
@@ -148,7 +148,7 @@ export default [
     },
     id: `222444`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Особые поручения`
   },
@@ -159,7 +159,7 @@ export default [
     },
     id: `222555`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Статский советник`
   },
@@ -170,7 +170,7 @@ export default [
     },
     id: `222666`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Коронация`
   },
@@ -181,7 +181,7 @@ export default [
     },
     id: `222777`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Любовница смерти`
   },
@@ -192,7 +192,7 @@ export default [
     },
     id: `222888`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Любовник смерти`
   },
@@ -203,7 +203,7 @@ export default [
     },
     id: `222999`,
     imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-    previewSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    videoSrc: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     url: `/`,
     name: `Алмазная колесница`
   },

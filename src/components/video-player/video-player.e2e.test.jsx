@@ -23,12 +23,12 @@ describe(`<VideoPlayer> play`, () => {
   test(`not play + play + not play`, () => {
     const videoData = {
       imageSrc: `/black-sunday-image`,
-      previewSrc: `/black-sunday-preview`,
+      videoSrc: `/black-sunday-preview`,
     }
 
     const wrapper = mount(<VideoPlayerWrapped
       imageSrc={videoData.imageSrc}
-      previewSrc={videoData.previewSrc}/>)
+      videoSrc={videoData.videoSrc}/>)
 
     act(() => {
       wrapper.setState({
@@ -57,12 +57,12 @@ describe(`<VideoPlayer> play`, () => {
   test(`play + no play`, () => {
     const videoData = {
       imageSrc: `/black-sunday-image`,
-      previewSrc: `/black-sunday-preview`,
+      videoSrc: `/black-sunday-preview`,
     }
 
     const wrapper = mount(<VideoPlayerWrapped
       imageSrc={videoData.imageSrc}
-      previewSrc={videoData.previewSrc}
+      videoSrc={videoData.videoSrc}
       shouldPlay={true}/>)
 
     act(() => {
