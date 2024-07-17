@@ -64,12 +64,18 @@ class VideoPlayer extends PureComponent {
     }
 
     if (isPlaying) {
-      this._videoRef.current.play()
+      if (this._videoRef.current.paused) {
+        this._videoRef.current.play()
+      }
     } else {
       if (isLoadInsteadPause) {
-        this._videoRef.current.load()
+        if (!this._videoRef.current.paused) {
+          this._videoRef.current.load()
+        }
       } else {
-        this._videoRef.current.pause()
+        if (!this._videoRef.current.paused) {
+          this._videoRef.current.pause()
+        }
       }
     }
   }

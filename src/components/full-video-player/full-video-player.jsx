@@ -2,6 +2,10 @@ import React, {PureComponent} from "react"
 
 import VideoControls from "../video-controls/video-controls.jsx"
 
+import withDragging from "../../hocs/with-dragging/with-dragging.jsx"
+
+
+const VideoControlsWrapped = withDragging(VideoControls)
 
 class FullVideoPlayer extends PureComponent {
   constructor(props) {
@@ -15,7 +19,7 @@ class FullVideoPlayer extends PureComponent {
       isPlaying,
       currentTime,
       duration,
-      setCurrentTimeByClick,
+      setCurrentTimeByUser,
       setIsPlaying,
       setIsFullScreen,
       isFullScreen
@@ -33,12 +37,12 @@ class FullVideoPlayer extends PureComponent {
 
         <button type="button" className="player__exit">Exit</button>
 
-        <VideoControls
+        <VideoControlsWrapped
           name={name}
           isPlaying={isPlaying}
           currentTime={currentTime}
           duration={duration}
-          setCurrentTimeByClick={setCurrentTimeByClick}
+          setCurrentTimeByUser={setCurrentTimeByUser}
           setIsPlaying={setIsPlaying}
           isFullScreen={isFullScreen}
           setIsFullScreen={setIsFullScreen}

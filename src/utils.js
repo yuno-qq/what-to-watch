@@ -17,9 +17,12 @@ const addDefaultGenre = (genres) => {
   return [defaultGenre].concat(genres)
 }
 
+const getPageZoom = () => window.outerWidth / window.innerWidth
+
 
 export {
   moviesToGenres,
   addDefaultGenre,
-  defaultGenre
+  defaultGenre,
+  getPageZoom
 }

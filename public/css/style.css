@@ -1024,6 +1024,7 @@ main {
   margin-left: auto; }
 
 .player__toggler {
+  border: none;
   display: block;
   width: 17px;
   height: 17px;

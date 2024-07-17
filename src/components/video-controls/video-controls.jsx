@@ -1,11 +1,14 @@
 import React, {PureComponent, createRef} from "react"
 
+import {getPageZoom} from "../../utils"
+
 
 class VideoControls extends PureComponent {
   constructor(props) {
     super(props)
 
-    this._toggerRef = createRef()
+    this._togglerRef = createRef()
+    this._progressRef = createRef()
 
     this._playBtnClickHandler = this._playBtnClickHandler.bind(this)
     this._screenBtnClickHandler = this._screenBtnClickHandler.bind(this)
@@ -45,26 +48,31 @@ class VideoControls extends PureComponent {
     const {
       duration,
       currentTime,
-      isPlaying
+      isPlaying,
+      dragValue
     } = this.props
 
     const hasDuration = duration !== null
     const currentTimeFormattedValue = hasDuration ? currentTime / duration * 100 : 0
     const timeFormattedValue = hasDuration ? VideoControls._secToHHMMSS(duration - currentTime) : `--:--`
 
+    const left = dragValue === null ? currentTimeFormattedValue
+      : dragValue
+
     return (
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
             <progress onClick={this._progressBarClickHandler}
+              ref={this._progressRef}
               className="player__progress"
-              value={currentTimeFormattedValue}
+              value={left}
               max="100"></progress>
 
-            <div className="player__toggler"
+            <button className="player__toggler"
               onMouseDown={this._togglerMouseDownHandler}
-              ref={this._toggerRef}
-              style={{left: `${currentTimeFormattedValue}%`}}>Toggler</div>
+              ref={this._togglerRef}
+              style={{left: `${left}%`}}>Toggler</button>
           </div>
           <div className="player__time-value">{timeFormattedValue}</div>
         </div>
@@ -90,17 +98,17 @@ class VideoControls extends PureComponent {
     )
   }
 
-  _progressBarClickHandler({nativeEvent, currentTarget}) {
+  _progressBarClickHandler({nativeEvent}) {
     const {
       offsetX
     } = nativeEvent
 
     const {
       clientWidth
-    } = currentTarget
+    } = this._progressRef.current
 
     const {
-      setCurrentTimeByClick,
+      setCurrentTimeByUser = () => {},
       duration
     } = this.props
 
@@ -108,7 +116,7 @@ class VideoControls extends PureComponent {
       return
     }
 
-    setCurrentTimeByClick(offsetX / clientWidth * duration)
+    setCurrentTimeByUser(offsetX / clientWidth * duration)
   }
 
   _playBtnClickHandler() {
@@ -129,18 +137,61 @@ class VideoControls extends PureComponent {
     setIsFullScreen(!isFullScreen)
   }
 
-  _togglerMouseDownHandler() {
+  _togglerMouseDownHandler({movementX}) {
+    const {
+      duration,
+      onDrag = () => {}
+    } = this.props
+
+    if (duration === null) {
+      return
+    }
+
+    onDrag(this._calcDrugging(movementX))
+
     document.addEventListener(`mousemove`, this._documentMouseMoveHandler)
     document.addEventListener(`mouseup`, this._documentMouseUpHandler)
   }
 
   _documentMouseMoveHandler({movementX}) {
-    const $toggler = this._toggerRef.current
-    $toggler.style.left = `${movementX}%`
+    const {
+      onDrag = () => {}
+    } = this.props
+
+    onDrag(this._calcDrugging(movementX))
   }
 
   _documentMouseUpHandler() {
+    const {
+      onDrag = () => {},
+      setCurrentTimeByUser = () => {},
+      duration
+    } = this.props
 
+    const $toggler = this._togglerRef.current
+    const left = parseFloat($toggler.style.left)
+
+    onDrag(null)
+    setCurrentTimeByUser(left * duration / 100)
+
+    document.removeEventListener(`mousemove`, this._documentMouseMoveHandler)
+    document.removeEventListener(`mouseup`, this._documentMouseUpHandler)
+  }
+
+  _calcDrugging(movementX) {
+    const $toggler = this._togglerRef.current
+    const $progress = this._progressRef.current
+
+    const currentLeft = parseFloat($toggler.style.left)
+
+    let left = currentLeft + movementX / getPageZoom() / $progress.clientWidth * 100
+    if (left < 0) {
+      left = 0
+    } else if (left > 100) {
+      left = 100
+    }
+
+    return left
   }
 }
 
