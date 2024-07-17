@@ -50,7 +50,7 @@ class VideoPlayer extends PureComponent {
       currentTimeByClick
     } = this.props
 
-    if (currentTimeByClick !== null && currentTimeByClick !== prevProps.currentTimeByClick) {
+    if (currentTimeByClick !== null) {
       this._videoRef.current.currentTime = currentTimeByClick
     }
 

@@ -108,7 +108,7 @@ class VideoControls extends PureComponent {
     } = this._progressRef.current
 
     const {
-      setCurrentTimeByUser = () => {},
+      setCurrentTimeByClick = () => {},
       duration
     } = this.props
 
@@ -116,7 +116,7 @@ class VideoControls extends PureComponent {
       return
     }
 
-    setCurrentTimeByUser(offsetX / clientWidth * duration)
+    setCurrentTimeByClick(offsetX / clientWidth * duration)
   }
 
   _playBtnClickHandler() {
@@ -137,7 +137,7 @@ class VideoControls extends PureComponent {
     setIsFullScreen(!isFullScreen)
   }
 
-  _togglerMouseDownHandler({movementX}) {
+  _togglerMouseDownHandler({movementX, clientX}) {
     const {
       duration,
       onDrag = () => {}
@@ -147,45 +147,51 @@ class VideoControls extends PureComponent {
       return
     }
 
-    onDrag(this._calcDrugging(movementX))
+    onDrag(this._calcDrugging(movementX, clientX))
 
     document.addEventListener(`mousemove`, this._documentMouseMoveHandler)
     document.addEventListener(`mouseup`, this._documentMouseUpHandler)
   }
 
-  _documentMouseMoveHandler({movementX}) {
+  _documentMouseMoveHandler({movementX, clientX}) {
     const {
       onDrag = () => {}
     } = this.props
 
-    onDrag(this._calcDrugging(movementX))
+    onDrag(this._calcDrugging(movementX, clientX))
   }
 
   _documentMouseUpHandler() {
     const {
       onDrag = () => {},
-      setCurrentTimeByUser = () => {},
+      setCurrentTimeByClick = () => {},
       duration
     } = this.props
 
     const $toggler = this._togglerRef.current
     const left = parseFloat($toggler.style.left)
 
+    setCurrentTimeByClick(left * duration / 100)
     onDrag(null)
-    setCurrentTimeByUser(left * duration / 100)
 
     document.removeEventListener(`mousemove`, this._documentMouseMoveHandler)
     document.removeEventListener(`mouseup`, this._documentMouseUpHandler)
   }
 
-  _calcDrugging(movementX) {
+  _calcDrugging(movementX, clientX) {
     const $toggler = this._togglerRef.current
     const $progress = this._progressRef.current
 
+    const progressLeft = $progress.getBoundingClientRect().left
+    const progressRight = $progress.getBoundingClientRect().right
     const currentLeft = parseFloat($toggler.style.left)
 
     let left = currentLeft + movementX / getPageZoom() / $progress.clientWidth * 100
-    if (left < 0) {
+    if (clientX < progressLeft) {
+      left = 0
+    } else if (clientX > progressRight) {
+      left = 100
+    } else if (left < 0) {
       left = 0
     } else if (left > 100) {
       left = 100

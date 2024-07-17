@@ -19,7 +19,7 @@ class FullVideoPlayer extends PureComponent {
       isPlaying,
       currentTime,
       duration,
-      setCurrentTimeByUser,
+      setCurrentTimeByClick,
       setIsPlaying,
       setIsFullScreen,
       isFullScreen
@@ -42,7 +42,7 @@ class FullVideoPlayer extends PureComponent {
           isPlaying={isPlaying}
           currentTime={currentTime}
           duration={duration}
-          setCurrentTimeByUser={setCurrentTimeByUser}
+          setCurrentTimeByClick={setCurrentTimeByClick}
           setIsPlaying={setIsPlaying}
           isFullScreen={isFullScreen}
           setIsFullScreen={setIsFullScreen}

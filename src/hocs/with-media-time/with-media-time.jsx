@@ -13,7 +13,7 @@ const withMediaTime = (Component) => {
       }
 
       this._setCurrentTime = this._setCurrentTime.bind(this)
-      this._setCurrentTimeByUser = this._setCurrentTimeByUser.bind(this)
+      this._setCurrentTimeByClick = this._setCurrentTimeByClick.bind(this)
       this._setDuration = this._setDuration.bind(this)
     }
 
@@ -31,7 +31,7 @@ const withMediaTime = (Component) => {
           currentTimeByClick={currentTimeByClick}
           duration={duration}
           setCurrentTime={this._setCurrentTime}
-          setCurrentTimeByUser={this._setCurrentTimeByUser}
+          setCurrentTimeByClick={this._setCurrentTimeByClick}
           setDuration={this._setDuration}
         />
       )
@@ -39,7 +39,8 @@ const withMediaTime = (Component) => {
 
     _setCurrentTime(currentTime) {
       this.setState({
-        currentTime
+        currentTime,
+        currentTimeByClick: null
       })
     }
 
@@ -49,9 +50,10 @@ const withMediaTime = (Component) => {
       })
     }
 
-    _setCurrentTimeByUser(currentTimeByClick) {
+    _setCurrentTimeByClick(currentTimeByClick) {
       this.setState({
-        currentTimeByClick
+        currentTimeByClick,
+        currentTime: currentTimeByClick
       })
     }
   }
