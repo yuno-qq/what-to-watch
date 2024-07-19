@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 
 
 const Btn = (props) => {
@@ -16,6 +17,14 @@ const Btn = (props) => {
       <span>{title}</span>
     </button>
   )
+}
+
+Btn.propTypes = {
+  cssMod: PropTypes.string,
+  cssMix: PropTypes.string,
+  renderIcon: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 }
 
 

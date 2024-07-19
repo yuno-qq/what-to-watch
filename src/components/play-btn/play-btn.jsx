@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react"
+import PropTypes from "prop-types"
 
 import Btn from "../btn/btn.jsx"
 
@@ -13,7 +14,7 @@ class PlayBtn extends PureComponent {
   render() {
     const {
       cssMix = ``,
-      onClick
+      onClick = () => {}
     } = this.props
 
     return (
@@ -34,6 +35,11 @@ class PlayBtn extends PureComponent {
       </svg>
     )
   }
+}
+
+PlayBtn.propTypes = {
+  cssMix: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 

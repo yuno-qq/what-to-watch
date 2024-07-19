@@ -1,4 +1,5 @@
 import React, {PureComponent, createRef} from "react"
+import PropTypes from "prop-types"
 
 import {getPageZoom} from "../../utils"
 
@@ -199,6 +200,18 @@ class VideoControls extends PureComponent {
 
     return left
   }
+}
+
+VideoControls.propTypes = {
+  duration: PropTypes.number,
+  currentTime: PropTypes.number,
+  isPlaying: PropTypes.bool.isRequired,
+  dragValue: PropTypes.number,
+  setCurrentTimeByClick: PropTypes.func,
+  setIsFullScreen: PropTypes.func,
+  setIsPlaying: PropTypes.func,
+  isFullScreen: PropTypes.bool,
+  onDrag: PropTypes.func
 }
 
 

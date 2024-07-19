@@ -3,6 +3,7 @@ import React, {PureComponent} from "react"
 import VideoControls from "../video-controls/video-controls.jsx"
 
 import withDragging from "../../hocs/with-dragging/with-dragging.jsx"
+import PropTypes from "prop-types"
 
 
 const VideoControlsWrapped = withDragging(VideoControls)
@@ -62,6 +63,23 @@ class FullVideoPlayer extends PureComponent {
 
     onExitBtnClick()
   }
+}
+
+FullVideoPlayer.propTypes = {
+  movie: PropTypes.exact({
+    name: PropTypes.string.isRequired,
+    imageSrc: PropTypes.string.isRequired,
+    videoSrc: PropTypes.string.isRequired,
+  }).isRequired,
+  renderItem: PropTypes.func.isRequired,
+  isPlaying: PropTypes.bool,
+  currentTime: PropTypes.number,
+  duration: PropTypes.number,
+  setCurrentTimeByClick: PropTypes.func,
+  setIsFullScreen: PropTypes.func,
+  setIsPlaying: PropTypes.func,
+  isFullScreen: PropTypes.bool,
+  onExitBtnClick: PropTypes.func
 }
 
 

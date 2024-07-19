@@ -146,7 +146,17 @@ VideoPlayer.propTypes = {
   videoSrc: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  setIsLoading: PropTypes.func.isRequired
+  setIsLoading: PropTypes.func.isRequired,
+  setDuration: PropTypes.func,
+  setIsFullScreen: PropTypes.func,
+  setIsPlaying: PropTypes.func,
+  setCurrentTime: PropTypes.func,
+  isMooted: PropTypes.bool,
+  isLooped: PropTypes.bool,
+  cssMod: PropTypes.string,
+  isFullScreen: PropTypes.bool,
+  isLoadInsteadPause: PropTypes.bool,
+  currentTimeByClick: PropTypes.number,
 }
 
 
