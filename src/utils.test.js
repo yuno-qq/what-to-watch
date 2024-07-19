@@ -1,6 +1,6 @@
 import {describe, test, expect} from "@jest/globals"
 
-import {addDefaultGenre, moviesToGenres} from "./utils"
+import {addDefaultGenre, moviesToGenres, getPageZoom} from "./utils"
 
 
 describe(`addDefaultGenre() test`, () => {
@@ -257,5 +257,11 @@ describe(`moviesToGenres() test`, () => {
         name: `Dramas`,
       }
     ])
+  })
+})
+
+describe(`getPageZoom() test`, () => {
+  test(`should word correctly`, () => {
+    expect(getPageZoom()).toBe(1)
   })
 })
