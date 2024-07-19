@@ -17,8 +17,41 @@ Enzyme.configure({
 jest.useFakeTimers()
 
 beforeEach(() => {
-  HTMLMediaElement.prototype.play = jest.fn()
-  HTMLMediaElement.prototype.load = jest.fn()
+  HTMLMediaElement.prototype.play = function () {
+    Object.defineProperty(this, `paused`, {
+      configurable: true,
+
+      set(value) {
+        this._paused = value
+      },
+
+      get() {
+        return this._paused
+      }
+    })
+
+    this.paused = false
+  }
+
+  jest.spyOn(HTMLMediaElement.prototype, `play`)
+
+  HTMLMediaElement.prototype.load = function () {
+    Object.defineProperty(this, `paused`, {
+      configurable: true,
+
+      set(value) {
+        this._paused = value
+      },
+
+      get() {
+        return this._paused
+      }
+    })
+
+    this.paused = true
+  }
+
+  jest.spyOn(HTMLMediaElement.prototype, `load`)
 })
 
 describe(`<MovieCard> hovers`, () => {
@@ -150,8 +183,6 @@ describe(`<MovieCard> hovers`, () => {
       })
     })
 
-    expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(1)
-
     wrapper.setProps({
       isActive: true
     })
@@ -167,7 +198,7 @@ describe(`<MovieCard> hovers`, () => {
       isActive: false
     })
 
-    expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(2)
+    expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(1)
 
     wrapper.setProps({
       isActive: true
@@ -205,7 +236,6 @@ describe(`<MovieCard> hovers`, () => {
       })
     })
 
-    expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(1)
 
     wrapper.setProps({
       isActive: true
@@ -222,7 +252,7 @@ describe(`<MovieCard> hovers`, () => {
       isActive: false
     })
 
-    expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(2)
+    expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(1)
 
     wrapper.setProps({
       isActive: true

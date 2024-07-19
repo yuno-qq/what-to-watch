@@ -15,8 +15,41 @@ Enzyme.configure({
 })
 
 beforeEach(() => {
-  HTMLMediaElement.prototype.play = jest.fn()
-  HTMLMediaElement.prototype.load = jest.fn()
+  HTMLMediaElement.prototype.play = function () {
+    Object.defineProperty(this, `paused`, {
+      configurable: true,
+
+      set(value) {
+        this._paused = value
+      },
+
+      get() {
+        return this._paused
+      }
+    })
+
+    this.paused = false
+  }
+
+  jest.spyOn(HTMLMediaElement.prototype, `play`)
+
+  HTMLMediaElement.prototype.load = function () {
+    Object.defineProperty(this, `paused`, {
+      configurable: true,
+
+      set(value) {
+        this._paused = value
+      },
+
+      get() {
+        return this._paused
+      }
+    })
+
+    this.paused = true
+  }
+
+  jest.spyOn(HTMLMediaElement.prototype, `load`)
 })
 
 describe(`<VideoPlayer> play`, () => {
@@ -50,7 +83,7 @@ describe(`<VideoPlayer> play`, () => {
       shouldPlay: false
     })
 
-    expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(2)
+    expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(1)
     expect(wrapper.state(`isPlaying`)).toEqual(false)
   })
 

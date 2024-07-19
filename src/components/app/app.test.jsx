@@ -45,7 +45,7 @@ describe(`<App> snapshots:`, () => {
 
     const tree = renderer.create(
         <Provider store={store}>
-          <App movies={movies} />
+          <App isFullVideoOpened={false} movies={movies} />
         </Provider>
     ).toJSON()
 

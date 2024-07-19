@@ -21,9 +21,46 @@ Enzyme.configure({
 
 jest.useFakeTimers()
 
+function initPlayLoad() {
+  HTMLMediaElement.prototype.play = function () {
+    Object.defineProperty(this, `paused`, {
+      configurable: true,
+
+      set(value) {
+        this._paused = value
+      },
+
+      get() {
+        return this._paused
+      }
+    })
+
+    this.paused = false
+  }
+
+  jest.spyOn(HTMLMediaElement.prototype, `play`)
+
+  HTMLMediaElement.prototype.load = function () {
+    Object.defineProperty(this, `paused`, {
+      configurable: true,
+
+      set(value) {
+        this._paused = value
+      },
+
+      get() {
+        return this._paused
+      }
+    })
+
+    this.paused = true
+  }
+
+  jest.spyOn(HTMLMediaElement.prototype, `load`)
+}
+
 beforeEach(() => {
-  HTMLMediaElement.prototype.play = jest.fn()
-  HTMLMediaElement.prototype.load = jest.fn()
+  initPlayLoad()
 })
 
 describe(`<MovieList> mouseenter and mouseleave`, () => {
@@ -128,8 +165,7 @@ describe(`<MovieList> mouseenter and mouseleave`, () => {
       })
     })
 
-    HTMLMediaElement.prototype.load = jest.fn()
-    HTMLMediaElement.prototype.play = jest.fn()
+    initPlayLoad()
 
     // mouseenter on first movie
     firstMovie.simulate(`mouseenter`, {
@@ -145,8 +181,7 @@ describe(`<MovieList> mouseenter and mouseleave`, () => {
     expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(0)
 
     // first movie mouseleave
-    HTMLMediaElement.prototype.load = jest.fn()
-    HTMLMediaElement.prototype.play = jest.fn()
+    initPlayLoad()
 
     firstMovie.simulate(`mouseleave`, {
       preventDefault
@@ -157,8 +192,7 @@ describe(`<MovieList> mouseenter and mouseleave`, () => {
     expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(1)
 
     // second movie mouseenter
-    HTMLMediaElement.prototype.load = jest.fn()
-    HTMLMediaElement.prototype.play = jest.fn()
+    initPlayLoad()
 
     secondMovie.simulate(`mouseenter`, {
       preventDefault
@@ -173,8 +207,7 @@ describe(`<MovieList> mouseenter and mouseleave`, () => {
     expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(0)
 
     // first movie mousenter
-    HTMLMediaElement.prototype.load = jest.fn()
-    HTMLMediaElement.prototype.play = jest.fn()
+    initPlayLoad()
 
     firstMovie.simulate(`mouseenter`, {
       preventDefault
