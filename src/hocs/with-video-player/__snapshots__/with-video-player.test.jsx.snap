@@ -5,9 +5,14 @@ exports[`<withVideoPlayer> snapshots: should render component with videoPlayer 1
   className="MOCK_WRAPPER"
 >
   <video
+    className=""
     loop={true}
     muted={true}
     onCanPlay={[Function]}
+    onLoadedMetadata={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
+    onTimeUpdate={[Function]}
     onWaiting={[Function]}
     poster="https://placehold.co/280x175/EEE/31343C"
     src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"

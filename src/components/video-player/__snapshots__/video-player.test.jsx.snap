@@ -2,9 +2,14 @@
 
 exports[`<VideoPlayer> snapshots: should render "Черное воскресенье" 1`] = `
 <video
+  className=""
   loop={true}
   muted={true}
   onCanPlay={[Function]}
+  onLoadedMetadata={[Function]}
+  onPause={[Function]}
+  onPlay={[Function]}
+  onTimeUpdate={[Function]}
   onWaiting={[Function]}
   poster="/black-sunday-image"
   src="/black-sunday-preview"
