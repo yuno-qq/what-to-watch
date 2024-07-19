@@ -38,7 +38,7 @@ describe(`<App> snapshots:`, () => {
           name: `Молчание ягнят`
         }
       ],
-      showingMoviesCount: 2
+      showingMoviesCount: 2,
     }
 
     const store = configureStore()(initialState)
@@ -46,6 +46,49 @@ describe(`<App> snapshots:`, () => {
     const tree = renderer.create(
         <Provider store={store}>
           <App isFullVideoOpened={false} movies={movies} />
+        </Provider>
+    ).toJSON()
+
+    expect(tree).toMatchSnapshot()
+  })
+
+  test(`should render main page with full video`, () => {
+    const initialState = {
+      genre: {
+        id: `all`,
+        name: `All genres`
+      },
+      movies: [
+        {
+          genre: {
+            id: `comedies`,
+            name: `Comedies`,
+          },
+          imageSrc: `https://placehold.co/280x175/EEE/31343C`,
+          url: `/`,
+          videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+          name: `Красный дракон`
+        },
+        {
+          genre: {
+            id: `comedies`,
+            name: `Comedies`,
+          },
+          imageSrc: `https://placehold.co/280x175/EEE/31343C`,
+          url: `/`,
+          videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+          name: `Молчание ягнят`
+        }
+      ],
+      showingMoviesCount: 2,
+      isFullVideoOpened: true
+    }
+
+    const store = configureStore()(initialState)
+
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App isFullVideoOpened={true} movies={movies} />
         </Provider>
     ).toJSON()
 
