@@ -98,7 +98,7 @@ describe(`<ShowMore> click CONNECTED`, () => {
 
     const wrapper = mount(
         <Provider store={store}>
-          <App />
+          <App isFullVideoOpened={false} />
         </Provider>
     )
 

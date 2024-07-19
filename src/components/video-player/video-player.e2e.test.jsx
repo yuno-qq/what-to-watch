@@ -50,6 +50,26 @@ beforeEach(() => {
   }
 
   jest.spyOn(HTMLMediaElement.prototype, `load`)
+
+  HTMLMediaElement.prototype.pause = function () {
+    Object.defineProperty(this, `paused`, {
+      configurable: true,
+
+      set(value) {
+        this._paused = value
+      },
+
+      get() {
+        return this._paused
+      }
+    })
+
+    this.paused = true
+  }
+
+  jest.spyOn(HTMLMediaElement.prototype, `pause`)
+
+  HTMLMediaElement.prototype.requestFullscreen = jest.fn()
 })
 
 describe(`<VideoPlayer> play`, () => {
@@ -87,13 +107,14 @@ describe(`<VideoPlayer> play`, () => {
     expect(wrapper.state(`isPlaying`)).toEqual(false)
   })
 
-  test(`play + no play`, () => {
+  test(`play + pause`, () => {
     const videoData = {
       imageSrc: `/black-sunday-image`,
       videoSrc: `/black-sunday-preview`,
     }
 
     const wrapper = mount(<VideoPlayerWrapped
+      isLoadInsteadPause={false}
       imageSrc={videoData.imageSrc}
       videoSrc={videoData.videoSrc}
       shouldPlay={true}/>)
@@ -112,6 +133,94 @@ describe(`<VideoPlayer> play`, () => {
     })
 
     expect(wrapper.state(`isPlaying`)).toEqual(false)
-    expect(HTMLMediaElement.prototype.load).toHaveBeenCalledTimes(1)
+    expect(HTMLMediaElement.prototype.pause).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe(`<VideoPlayer> load data`, () => {
+  test(`should load meta data`, () => {
+    const videoData = {
+      imageSrc: `/black-sunday-image`,
+      videoSrc: `/black-sunday-preview`,
+    }
+
+    const setDuration = jest.fn()
+    const wrapper = mount(<VideoPlayer
+      setDuration={setDuration}
+      setIsLoading={() => {}}
+      isPlaying={false}
+      isLoading={true}
+      imageSrc={videoData.imageSrc}
+      videoSrc={videoData.videoSrc}/>)
+
+    wrapper.setProps({
+      isLoading: false
+    })
+
+    const video = wrapper.find(`video`)
+
+    video.simulate(`loadedmetadata`, {
+      preventDefault: () => {}
+    })
+
+    expect(setDuration).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe(`<VideoPlayer> screen size`, () => {
+  test(`should full screen`, () => {
+    const videoData = {
+      imageSrc: `/black-sunday-image`,
+      videoSrc: `/black-sunday-preview`,
+    }
+
+    const setIsFullScreen = jest.fn()
+    const wrapper = mount(<VideoPlayer
+      setIsFullScreen={setIsFullScreen}
+      setIsLoading={() => {}}
+      isPlaying={false}
+      isLoading={true}
+      imageSrc={videoData.imageSrc}
+      videoSrc={videoData.videoSrc}/>)
+
+    act(() => {
+      wrapper.setProps({
+        isLoading: false,
+        isFullScreen: true
+      })
+    })
+
+    expect(HTMLMediaElement.prototype.requestFullscreen).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe(`<VideoPlayer> time update`, () => {
+  test(`should call setCurrentTime`, () => {
+    const videoData = {
+      imageSrc: `/black-sunday-image`,
+      videoSrc: `/black-sunday-preview`,
+    }
+
+    const setCurrentTime = jest.fn()
+    const wrapper = mount(<VideoPlayer
+      setCurrentTime={setCurrentTime}
+      setIsLoading={() => {}}
+      isPlaying={false}
+      isLoading={true}
+      imageSrc={videoData.imageSrc}
+      videoSrc={videoData.videoSrc}/>)
+
+    act(() => {
+      wrapper.setProps({
+        isLoading: false,
+      })
+    })
+
+    const video = wrapper.find(`video`)
+    video.simulate(`timeupdate`, {
+      preventDefault: () => {}
+    })
+
+    expect(setCurrentTime).toHaveBeenCalledTimes(1)
   })
 })

@@ -66,7 +66,7 @@ class FullVideoPlayer extends PureComponent {
 }
 
 FullVideoPlayer.propTypes = {
-  movie: PropTypes.exact({
+  movie: PropTypes.shape({
     name: PropTypes.string.isRequired,
     imageSrc: PropTypes.string.isRequired,
     videoSrc: PropTypes.string.isRequired,

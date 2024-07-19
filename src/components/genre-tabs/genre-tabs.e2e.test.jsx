@@ -58,7 +58,7 @@ describe(`<GenreTabs> click on tabs CONNECTED`, () => {
 
   test(`2nd tab + 3rd tab + 1st tab`, () => {
     const wrapper = mount(<Provider store={store}>
-      <App />
+      <App isFullVideoOpened={false} />
     </Provider>)
 
     expect(store.getState().genre).toEqual({
