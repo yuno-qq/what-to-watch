@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Btn> snapshots should render basic case 1`] = `
+<button
+  className="btn  "
+  onClick={[Function]}
+  type="button"
+>
+  <svg />
+  <span>
+    Title of button
+  </span>
+</button>
+`;
+
+exports[`<Btn> snapshots should render with all props 1`] = `
+<button
+  className="btn btn--size_sm player__btn"
+  onClick={[Function]}
+  type="button"
+>
+  <svg />
+  <span>
+    Title of 2nd button
+  </span>
+</button>
+`;
