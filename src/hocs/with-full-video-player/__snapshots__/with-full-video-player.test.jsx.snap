@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withFullVideoPlayer() snapshots should render correctly 1`] = `
+<div
+  className="MOCK_COMPONENT"
+>
+  <video
+    className="player__video"
+    loop={false}
+    muted={false}
+    onCanPlay={[Function]}
+    onLoadedMetadata={[Function]}
+    onPause={[Function]}
+    onPlay={[Function]}
+    onTimeUpdate={[Function]}
+    onWaiting={[Function]}
+    poster="image.svg"
+    src="movie.avv"
+  />
+</div>
+`;
