@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Btn> snapshots should render basic case 1`] = `
+exports[`<Btn> snapshots: should render basic case 1`] = `
 <button
   className="btn  "
   onClick={[Function]}
@@ -13,7 +13,7 @@ exports[`<Btn> snapshots should render basic case 1`] = `
 </button>
 `;
 
-exports[`<Btn> snapshots should render with all props 1`] = `
+exports[`<Btn> snapshots: should render with all props 1`] = `
 <button
   className="btn btn--size_sm player__btn"
   onClick={[Function]}

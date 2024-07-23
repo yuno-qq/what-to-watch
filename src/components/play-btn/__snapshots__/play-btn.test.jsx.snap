@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<PlayBtn> snapshots should render correctly 1`] = `
+exports[`<PlayBtn> snapshots: should render correctly 1`] = `
 <button
   className="btn btn--play player__btn"
   onClick={[Function]}

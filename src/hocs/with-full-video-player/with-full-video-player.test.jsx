@@ -5,7 +5,7 @@ import renderer from "react-test-renderer"
 import withFullVideoPlayer from "./with-full-video-player.jsx"
 
 
-describe(`withFullVideoPlayer() snapshots`, () => {
+describe(`withFullVideoPlayer() snapshots:`, () => {
   test(`should render correctly`, () => {
     const imageSrc = `image.svg`
     const videoSrc = `movie.avv`

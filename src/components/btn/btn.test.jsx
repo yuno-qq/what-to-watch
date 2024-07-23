@@ -5,7 +5,7 @@ import {describe, test, expect} from "@jest/globals"
 import Btn from "./btn.jsx"
 
 
-describe(`<Btn> snapshots`, () => {
+describe(`<Btn> snapshots:`, () => {
   test(`should render basic case`, () => {
     const btn = renderer.create(<Btn renderIcon={() => <svg></svg>} title={`Title of button`}/>)
       .toJSON()
