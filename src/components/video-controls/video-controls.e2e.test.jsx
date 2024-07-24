@@ -39,3 +39,95 @@ describe(`<VideoControls> play pause`, () => {
     expect(setIsPlaying.mock.calls[1][0]).toBe(true)
   })
 })
+
+describe(`<VideoControls> full size`, () => {
+  test(`full size`, () => {
+    const setIsFullScreen = jest.fn()
+
+    const wrapper = mount(<VideoControls
+      setIsFullScreen={setIsFullScreen}
+      duration={100}
+      currentTime={20}
+      isPlaying={true}
+      currentTimeByClick={null}
+    />)
+
+    let sizeBtn = wrapper.find(`.player__full-screen`)
+    sizeBtn.simulate(`click`)
+
+    expect(setIsFullScreen).toHaveBeenCalledTimes(1)
+    expect(setIsFullScreen.mock.calls[0][0]).toBe(true)
+  })
+})
+
+describe(`<VideoControls> bar click`, () => {
+  test(`click without duration`, () => {
+    const setCurrentTimeByClick = jest.fn()
+
+    const wrapper = mount(<VideoControls
+      setCurrentTimeByClick={setCurrentTimeByClick}
+      duration={null}
+      currentTime={0}
+      isPlaying={true}
+      currentTimeByClick={null}
+    />)
+
+    const progressBar = wrapper.find(`progress`)
+    progressBar.simulate(`click`)
+
+    expect(setCurrentTimeByClick).toHaveBeenCalledTimes(0)
+  })
+
+  test(`click with duration`, () => {
+    const setCurrentTimeByClick = jest.fn()
+
+    const wrapper = mount(<VideoControls
+      setCurrentTimeByClick={setCurrentTimeByClick}
+      duration={100}
+      currentTime={0}
+      isPlaying={true}
+      currentTimeByClick={null}
+    />)
+
+    const progressBar = wrapper.find(`progress`)
+    progressBar.simulate(`click`)
+
+    expect(setCurrentTimeByClick).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe(`<VideoControls> toggler mouse move`, () => {
+  test(`mouse move without duration`, () => {
+    const onDrag = jest.fn()
+
+    const wrapper = mount(<VideoControls
+      onDrag={onDrag}
+      duration={null}
+      currentTime={0}
+      isPlaying={true}
+      currentTimeByClick={null}
+    />)
+
+    const toggler = wrapper.find(`.player__toggler`)
+    toggler.simulate(`mousedown`)
+
+    expect(onDrag).toHaveBeenCalledTimes(0)
+  })
+
+  test(`mouse move duration`, () => {
+    const onDrag = jest.fn()
+
+    const wrapper = mount(<VideoControls
+      onDrag={onDrag}
+      duration={100}
+      currentTime={0}
+      isPlaying={true}
+      currentTimeByClick={null}
+    />)
+
+    const toggler = wrapper.find(`.player__toggler`)
+    toggler.simulate(`mousedown`)
+
+    expect(onDrag).toHaveBeenCalledTimes(1)
+  })
+})
