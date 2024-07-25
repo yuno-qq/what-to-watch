@@ -14,6 +14,7 @@ describe(`<FullVideoPlayer> snapshots:`, () => {
     }
 
     const tree = renderer.create(<FullVideoPlayer
+      isPlaying={true}
       duration={200}
       currentTime={20}
       movie={movie}

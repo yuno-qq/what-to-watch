@@ -13,7 +13,7 @@ Enzyme.configure({
 describe(`withDragging() onDrag`, () => {
   test(`should change dragValue`, () => {
     const MockComponentWrapped = withDragging((props) => <div>
-      <button onClick={props.onDrag(5)}></button>
+      <button onClick={() => props.onDrag(5)}></button>
     </div>)
 
     const wrapper = mount(<MockComponentWrapped />)

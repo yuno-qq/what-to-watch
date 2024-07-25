@@ -22,8 +22,10 @@ Enzyme.configure({
 })
 
 beforeEach(() => {
-  store.dispatch({
-    type: `FULL_RESET`
+  act(() => {
+    store.dispatch({
+      type: `FULL_RESET`
+    })
   })
 
   HTMLMediaElement.prototype.play = function () {
@@ -73,6 +75,7 @@ describe(`<FullVideoPlayer> exit UNIT`, () => {
 
     const onExitBtnClick = jest.fn()
     const wrapper = mount(<FullVideoPlayer
+      isPlaying={true}
       onExitBtnClick={onExitBtnClick}
       duration={200}
       currentTime={20}
