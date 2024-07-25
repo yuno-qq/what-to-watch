@@ -8,6 +8,7 @@ import FullVideoPlayer from "./full-video-player.jsx"
 describe(`<FullVideoPlayer> snapshots:`, () => {
   test(`should render correctly`, () => {
     const movie = {
+      name: `Красный дракон`,
       imageSrc: `image.svg`,
       videoSrc: `video.wav`
     }
