@@ -254,9 +254,9 @@ describe(`ActionCreator.setGenre() test`, () => {
   })
 })
 
-describe(`ActionCreator.setMoviesByGenre() test`, () => {
+describe(`ActionCreator.filterMoviesByGenre() test`, () => {
   test(`should return action with "dramas" payload`, () => {
-    const action = ActionCreator.setMoviesByGenre({
+    const action = ActionCreator.filterMoviesByGenre({
       id: `dramas`,
       name: `Dramas`,
     }, movies)

@@ -2,7 +2,6 @@ import {createStore, applyMiddleware, compose} from "redux"
 import {withExtraArgument} from "redux-thunk"
 
 import createAPI from "./api"
-import moviesData from "./mocks/movies.jsx"
 import {defaultGenre} from "./utils"
 
 
@@ -12,10 +11,9 @@ const MOVIES_ON_PAGE_COUNT = 4 // TODO 20
 
 const initialState = {
   genre: defaultGenre,
-  movies: moviesData,
-  showingMoviesCount: MOVIES_ON_PAGE_COUNT > moviesData.length
-    ? moviesData.length
-    : MOVIES_ON_PAGE_COUNT,
+  movies: [],
+  filteredMovies: [],
+  showingMoviesCount: MOVIES_ON_PAGE_COUNT,
   isFullVideoOpened: false
 }
 
@@ -35,9 +33,9 @@ const ActionCreator = {
     }
   },
 
-  setMoviesByGenre: (genre, movies) => {
+  filterMoviesByGenre: (genre, movies) => {
     return {
-      type: `SET_MOVIES`,
+      type: `FILTER_MOVIES`,
       payload: filterMoviesByGenre(genre, movies)
     }
   },
@@ -64,6 +62,23 @@ const ActionCreator = {
       type: `TOGGLE_FULL_VIDEO`,
       payload: flag
     }
+  },
+
+  loadMovies: (movies) => {
+    return {
+      type: `LOAD_MOVIES`,
+      payload: movies
+    }
+  }
+}
+
+const Operation = {
+  loadMovies: () => (dispatch, getState, _api) => {
+    return _api.get(`/c175f975-dcd9-4565-8bc9-05cad0f07a68`)
+      .then((response) => {
+        dispatch(ActionCreator.loadMovies(response.data))
+        dispatch(ActionCreator.filterMoviesByGenre(getState().genre, response.data))
+      })
   }
 }
 
@@ -74,9 +89,9 @@ const reducer = (state = initialState, action) => {
         genre: action.payload
       })
 
-    case `SET_MOVIES`:
+    case `FILTER_MOVIES`:
       return Object.assign({}, state, {
-        movies: action.payload
+        filteredMovies: action.payload
       })
 
     case `RESET_MOVIES_COUNT`:
@@ -92,6 +107,11 @@ const reducer = (state = initialState, action) => {
     case `TOGGLE_FULL_VIDEO`:
       return Object.assign({}, state, {
         isFullVideoOpened: action.payload
+      })
+
+    case `LOAD_MOVIES`:
+      return Object.assign({}, state, {
+        movies: action.payload
       })
 
     case `FULL_RESET`:
@@ -117,5 +137,6 @@ export {
   ActionCreator,
   store,
   reducer,
-  api
+  api,
+  Operation
 }
