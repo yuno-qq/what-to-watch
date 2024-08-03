@@ -1,8 +1,12 @@
 import {createStore, applyMiddleware, compose} from "redux"
+import {withExtraArgument} from "redux-thunk"
 
+import createAPI from "./api"
 import moviesData from "./mocks/movies.jsx"
 import {defaultGenre} from "./utils"
 
+
+const api = createAPI((...args) => store.dispatch(...args))
 
 const MOVIES_ON_PAGE_COUNT = 4 // TODO 20
 
@@ -97,8 +101,14 @@ const reducer = (state = initialState, action) => {
   return state
 }
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducer, composeEnhancers(applyMiddleware()))
+const devToolsFn = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
+  : (fn) => fn
+
+const store = createStore(
+    reducer,
+    compose(applyMiddleware(withExtraArgument(api)), devToolsFn)
+)
 
 
 export {
@@ -106,5 +116,6 @@ export {
   MOVIES_ON_PAGE_COUNT,
   ActionCreator,
   store,
-  reducer
+  reducer,
+  api
 }
