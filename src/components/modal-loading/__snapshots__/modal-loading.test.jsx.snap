@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ModalLoading> snapshots: should render correctly 1`] = `
+<div
+  className="modal"
+>
+  <div
+    className="modal__content"
+  >
+    <h2>
+      Идет загрузка...
+    </h2>
+    <p>
+      Пожалуйста, подождите
+    </p>
+  </div>
+</div>
+`;
