@@ -303,6 +303,7 @@ describe(`reducer() FILTER_MOVIES test`, () => {
         name: `All genres`
       },
       movies,
+      filteredMovies: [],
       showingMoviesCount: 4
     }
 
@@ -337,7 +338,8 @@ describe(`reducer() FILTER_MOVIES test`, () => {
         id: `all`,
         name: `All genres`
       },
-      movies: crimeMovies,
+      movies,
+      filteredMovies: crimeMovies,
       showingMoviesCount: 4
     })
   })
