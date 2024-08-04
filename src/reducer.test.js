@@ -261,7 +261,7 @@ describe(`ActionCreator.filterMoviesByGenre() test`, () => {
       name: `Dramas`,
     }, movies)
 
-    expect(action.type).toBe(`SET_MOVIES`)
+    expect(action.type).toBe(`FILTER_MOVIES`)
     expect(action.payload.length).toBe(10)
     expect(action.payload.every((movie) => movie.genre.id === `dramas`)).toBe(true)
   })
@@ -295,7 +295,7 @@ describe(`reducer() SET_GENRE test`, () => {
   })
 })
 
-describe(`reducer() SET_MOVIES test`, () => {
+describe(`reducer() FILTER_MOVIES test`, () => {
   test(`should return state with new movies - by "documentary"`, () => {
     const initialState = {
       genre: {
@@ -330,7 +330,7 @@ describe(`reducer() SET_MOVIES test`, () => {
     ]
 
     expect(reducer(initialState, {
-      type: `SET_MOVIES`,
+      type: `FILTER_MOVIES`,
       payload: crimeMovies
     })).toEqual({
       genre: {

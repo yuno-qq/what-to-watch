@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 
 
 const Modal = (props) => {
@@ -15,6 +16,11 @@ const Modal = (props) => {
       </div>
     </div>
   )
+}
+
+Modal.propTypes = {
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 }
 
 

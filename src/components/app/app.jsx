@@ -140,7 +140,9 @@ class App extends PureComponent {
 
 
 App.propTypes = {
-  isFullVideoOpened: PropTypes.bool.isRequired
+  isFullVideoOpened: PropTypes.bool.isRequired,
+  hasServerError: PropTypes.bool.isRequired,
+  movies: PropTypes.array.isRequired,
 }
 
 
