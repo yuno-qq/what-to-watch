@@ -1393,3 +1393,42 @@ main {
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%); }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 16px;
+  line-height: 20px;
+  color: #DFCF77;
+
+  background-color: #000000;
+}
+
+.modal__content {
+  width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #DFCF77;
+}
+
+.modal__content h2 {
+  font-size: 32px;
+  line-height: 40px;
+
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.modal__content p {
+  margin-top: 0;
+  margin-bottom: 0;
+}

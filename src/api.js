@@ -1,7 +1,8 @@
 import axios from "axios"
+import {ActionCreator} from "./reducer"
 
 
-const createAPI = () => {
+const createAPI = (dispatch) => {
   const api = axios.create({
     baseURL: `https://mocki.io/v1`,
     timeout: 5000,
@@ -9,7 +10,9 @@ const createAPI = () => {
   })
 
   const onSuccess = (response) => response
-  const onFail = (err) => err
+  const onFail = () => {
+    dispatch(ActionCreator.changeServerErrorStatus(true))
+  }
 
   api.interceptors.response.use(onSuccess, onFail)
 

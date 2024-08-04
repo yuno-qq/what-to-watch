@@ -14,7 +14,8 @@ const initialState = {
   movies: [],
   filteredMovies: [],
   showingMoviesCount: 0,
-  isFullVideoOpened: false
+  isFullVideoOpened: false,
+  hasServerError: false
 }
 
 const filterMoviesByGenre = (genre, movies) => {
@@ -69,6 +70,13 @@ const ActionCreator = {
       type: `LOAD_MOVIES`,
       payload: movies
     }
+  },
+
+  changeServerErrorStatus: (flag) => {
+    return {
+      type: `CHANGE_SERVER_ERROR_STATUS`,
+      payload: flag
+    }
   }
 }
 
@@ -76,6 +84,10 @@ const Operation = {
   loadMovies: () => (dispatch, getState, _api) => {
     return _api.get(`/c175f975-dcd9-4565-8bc9-05cad0f07a68`)
       .then((response) => {
+        if (!response || !response.data) {
+          throw new Error()
+        }
+
         dispatch(ActionCreator.loadMovies(response.data))
         dispatch(ActionCreator.filterMoviesByGenre(getState().genre, response.data))
         dispatch(ActionCreator.incrementMoviesCount(getState().filteredMovies.length, MOVIES_ON_PAGE_COUNT, getState().showingMoviesCount))
@@ -113,6 +125,11 @@ const reducer = (state = initialState, action) => {
     case `LOAD_MOVIES`:
       return Object.assign({}, state, {
         movies: action.payload
+      })
+
+    case `CHANGE_SERVER_ERROR_STATUS`:
+      return Object.assign({}, state, {
+        hasServerError: action.payload
       })
 
     case `FULL_RESET`:
