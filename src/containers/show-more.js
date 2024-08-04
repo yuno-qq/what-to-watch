@@ -8,7 +8,7 @@ import ShowMore from "../components/show-more/show-more.jsx"
 const mapDispatchToProps = (dispatch, ownProps) => {
   return Object.assign({}, ownProps, {
     onClick: () => {
-      dispatch(ActionCreator.incrementMoviesCount(store.getState().movies.length, MOVIES_ON_PAGE_COUNT, store.getState().showingMoviesCount))
+      dispatch(ActionCreator.incrementMoviesCount(store.getState().filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().showingMoviesCount))
     }
   })
 }

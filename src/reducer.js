@@ -13,7 +13,7 @@ const initialState = {
   genre: defaultGenre,
   movies: [],
   filteredMovies: [],
-  showingMoviesCount: MOVIES_ON_PAGE_COUNT,
+  showingMoviesCount: 0,
   isFullVideoOpened: false
 }
 
@@ -78,6 +78,7 @@ const Operation = {
       .then((response) => {
         dispatch(ActionCreator.loadMovies(response.data))
         dispatch(ActionCreator.filterMoviesByGenre(getState().genre, response.data))
+        dispatch(ActionCreator.incrementMoviesCount(getState().filteredMovies.length, MOVIES_ON_PAGE_COUNT, getState().showingMoviesCount))
       })
   }
 }
