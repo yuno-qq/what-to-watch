@@ -91,6 +91,8 @@ const Operation = {
         dispatch(ActionCreator.loadMovies(response.data))
         dispatch(ActionCreator.filterMoviesByGenre(getState().genre, response.data))
         dispatch(ActionCreator.incrementMoviesCount(getState().filteredMovies.length, MOVIES_ON_PAGE_COUNT, getState().showingMoviesCount))
+
+        return response
       })
   }
 }

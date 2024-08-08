@@ -1,6 +1,8 @@
 import {describe, test, expect, beforeEach} from "@jest/globals"
+import MockAdapter from "axios-mock-adapter"
+import axios from "axios"
 
-import {filterMoviesByGenre, ActionCreator, reducer} from './reducer'
+import {filterMoviesByGenre, ActionCreator, reducer, Operation} from './reducer'
 
 
 let movies
@@ -434,5 +436,62 @@ describe(`reducer() CHANGE_SERVER_ERROR_STATUS test`, () => {
       showingMoviesCount: 4,
       hasServerError: true
     })
+  })
+})
+
+describe(`Operation.loadMovies() test`, () => {
+  test(`success status`, () => {
+    const mockAxios = new MockAdapter(axios)
+    const dispatch = jest.fn()
+    const loadMovies = Operation.loadMovies()
+
+    mockAxios.onGet(`/c175f975-dcd9-4565-8bc9-05cad0f07a68`)
+      .reply(200, [{genre: {id: `all_genres`}}])
+
+    return loadMovies(dispatch, () => ({
+      genre: {
+        id: `all_genres`,
+        name: `All genres`
+      },
+      filteredMovies: new Array(7).fill(null)
+    }), axios)
+      .then((response) => {
+        expect(response.data).toEqual([{genre: {id: `all_genres`}}])
+        expect(dispatch).toHaveBeenCalledTimes(3)
+        expect(dispatch.mock.calls[0][0]).toEqual({
+          type: `LOAD_MOVIES`,
+          payload: [{genre: {id: `all_genres`}}]
+        })
+      })
+  })
+
+  test(`success status with error response`, () => {
+    const mockAxios = new MockAdapter(axios)
+    const dispatch = jest.fn()
+    const loadMovies = Operation.loadMovies()
+
+    mockAxios.onGet(`/c175f975-dcd9-4565-8bc9-05cad0f07a68`)
+      .reply(200, null)
+
+    expect.assertions(1)
+    return loadMovies(dispatch, () => {}, axios)
+      .catch(() => {
+        expect(dispatch).toHaveBeenCalledTimes(0)
+      })
+  })
+
+  test(`404 status`, () => {
+    const mockAxios = new MockAdapter(axios)
+    const dispatch = jest.fn()
+    const loadMovies = Operation.loadMovies()
+
+    mockAxios.onGet(`/c175f975-dcd9-4565-8bc9-05cad0f07a68`)
+      .reply(404)
+
+    expect.assertions(1)
+    return loadMovies(dispatch, () => {}, axios)
+      .catch(() => {
+        expect(dispatch).toHaveBeenCalledTimes(0)
+      })
   })
 })
