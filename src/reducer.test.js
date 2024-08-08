@@ -267,6 +267,25 @@ describe(`ActionCreator.filterMoviesByGenre() test`, () => {
   })
 })
 
+describe(`ActionCreator.loadMovies() test`, () => {
+  test(`should return action with movies`, () => {
+    const action = ActionCreator.loadMovies(movies)
+
+    expect(action.type).toBe(`LOAD_MOVIES`)
+    expect(action.payload.length).toBe(19)
+    expect(action.payload).toEqual(movies)
+  })
+})
+
+describe(`ActionCreator.changeServerErrorStatus() test`, () => {
+  test(`should return new action with hasError true`, () => {
+    const action = ActionCreator.changeServerErrorStatus(true)
+
+    expect(action.type).toBe(`CHANGE_SERVER_ERROR_STATUS`)
+    expect(action.payload).toBe(true)
+  })
+})
+
 describe(`reducer() SET_GENRE test`, () => {
   test(`should return state with new genre - "comedy"`, () => {
     const initialState = {
@@ -363,5 +382,57 @@ describe(`reducer() without correct action test`, () => {
         www: 456
       }
     })).toEqual(initialState)
+  })
+})
+
+describe(`reducer() LOAD_MOVIES test`, () => {
+  test(`should return new state`, () => {
+    const initialState = {
+      genre: {
+        id: `all`,
+        name: `All genres`
+      },
+      movies: [],
+      showingMoviesCount: 4
+    }
+
+    expect(reducer(initialState, {
+      type: `LOAD_MOVIES`,
+      payload: movies
+    })).toEqual({
+      genre: {
+        id: `all`,
+        name: `All genres`
+      },
+      movies,
+      showingMoviesCount: 4
+    })
+  })
+})
+
+describe(`reducer() CHANGE_SERVER_ERROR_STATUS test`, () => {
+  test(`should return new state with error`, () => {
+    const initialState = {
+      genre: {
+        id: `all`,
+        name: `All genres`
+      },
+      movies: [],
+      showingMoviesCount: 4,
+      hasServerError: false
+    }
+
+    expect(reducer(initialState, {
+      type: `CHANGE_SERVER_ERROR_STATUS`,
+      payload: true
+    })).toEqual({
+      genre: {
+        id: `all`,
+        name: `All genres`
+      },
+      movies: [],
+      showingMoviesCount: 4,
+      hasServerError: true
+    })
   })
 })
