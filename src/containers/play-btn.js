@@ -1,6 +1,6 @@
 import {connect} from "react-redux"
 
-import {ActionCreator} from "../reducers/static"
+import {ActionCreator} from "../reducers/static/static"
 
 import PlayBtn from "../components/play-btn/play-btn.jsx"
 

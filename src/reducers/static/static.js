@@ -1,4 +1,4 @@
-import {defaultGenre} from "../utils"
+import {defaultGenre} from "../../utils"
 
 
 const initialState = {

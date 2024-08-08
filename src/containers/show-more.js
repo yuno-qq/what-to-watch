@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 
-import {ActionCreator, MOVIES_ON_PAGE_COUNT} from "../reducers/dynamic"
+import {ActionCreator, MOVIES_ON_PAGE_COUNT} from "../reducers/dynamic/dynamic"
 import {store} from "../store/configure-store"
 
 import ShowMore from "../components/show-more/show-more.jsx"

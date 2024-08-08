@@ -1,8 +1,8 @@
 import {connect} from 'react-redux'
 
 import {moviesToGenres, addDefaultGenre} from "../utils"
-import {ActionCreator as ActionCreatorStatic} from "../reducers/static"
-import {ActionCreator as ActionCreatorDynamic} from "../reducers/dynamic"
+import {ActionCreator as ActionCreatorStatic} from "../reducers/static/static"
+import {ActionCreator as ActionCreatorDynamic} from "../reducers/dynamic/dynamic"
 import {store} from "../store/configure-store"
 
 import GenreTabs from "../components/genre-tabs/genre-tabs.jsx"
