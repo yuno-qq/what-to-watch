@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<App> snapshots: should render error 1`] = `
+<div
+  className="modal"
+>
+  <div
+    className="modal__content"
+  >
+    <h2>
+      Произошла ошибка
+    </h2>
+    <p>
+      Пожалуйста, перезагрузите страницу
+    </p>
+  </div>
+</div>
+`;
+
+exports[`<App> snapshots: should render loader 1`] = `
+<div
+  className="modal"
+>
+  <div
+    className="modal__content"
+  >
+    <h2>
+      Идет загрузка...
+    </h2>
+    <p>
+      Пожалуйста, подождите
+    </p>
+  </div>
+</div>
+`;
+
 exports[`<App> snapshots: should render main page 1`] = `
 <div>
   <section

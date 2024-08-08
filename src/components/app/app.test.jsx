@@ -218,6 +218,52 @@ const movies = [
 ]
 
 describe(`<App> snapshots:`, () => {
+  test(`should render loader`, () => {
+    const initialState = {
+      genre: {
+        id: `all`,
+        name: `All genres`
+      },
+      showingMoviesCount: 2,
+      hasServerError: false,
+      movies: [],
+      filteredMovies: []
+    }
+
+    const store = configureStore()(initialState)
+
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App isFullVideoOpened={false} hasServerError={initialState.hasServerError} movies={initialState.movies} />
+        </Provider>
+    ).toJSON()
+
+    expect(tree).toMatchSnapshot()
+  })
+
+  test(`should render error`, () => {
+    const initialState = {
+      genre: {
+        id: `all`,
+        name: `All genres`
+      },
+      showingMoviesCount: 2,
+      hasServerError: true,
+      movies: [{movie: 1}],
+      filteredMovies: [{movie: 1}]
+    }
+
+    const store = configureStore()(initialState)
+
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App isFullVideoOpened={false} hasServerError={initialState.hasServerError} movies={initialState.movies} />
+        </Provider>
+    ).toJSON()
+
+    expect(tree).toMatchSnapshot()
+  })
+
   test(`should render main page`, () => {
     const initialState = {
       genre: {
