@@ -1,20 +1,9 @@
-import {createStore, applyMiddleware, compose} from "redux"
-import {withExtraArgument} from "redux-thunk"
-
-import createAPI from "./api"
-import {defaultGenre} from "./utils"
-
-
-const api = createAPI((...args) => store.dispatch(...args))
-
 const MOVIES_ON_PAGE_COUNT = 4 // TODO 20
 
 const initialState = {
-  genre: defaultGenre,
   movies: [],
   filteredMovies: [],
   showingMoviesCount: 0,
-  isFullVideoOpened: false,
   hasServerError: false
 }
 
@@ -27,17 +16,17 @@ const filterMoviesByGenre = (genre, movies) => {
 }
 
 const ActionCreator = {
-  setGenre: (genre) => {
-    return {
-      type: `SET_GENRE`,
-      payload: genre
-    }
-  },
-
   filterMoviesByGenre: (genre, movies) => {
     return {
       type: `FILTER_MOVIES`,
       payload: filterMoviesByGenre(genre, movies)
+    }
+  },
+
+  loadMovies: (movies) => {
+    return {
+      type: `LOAD_MOVIES`,
+      payload: movies
     }
   },
 
@@ -58,20 +47,6 @@ const ActionCreator = {
     }
   },
 
-  toggleFullVideo: (flag) => {
-    return {
-      type: `TOGGLE_FULL_VIDEO`,
-      payload: flag
-    }
-  },
-
-  loadMovies: (movies) => {
-    return {
-      type: `LOAD_MOVIES`,
-      payload: movies
-    }
-  },
-
   changeServerErrorStatus: (flag) => {
     return {
       type: `CHANGE_SERVER_ERROR_STATUS`,
@@ -89,8 +64,8 @@ const Operation = {
         }
 
         dispatch(ActionCreator.loadMovies(response.data))
-        dispatch(ActionCreator.filterMoviesByGenre(getState().genre, response.data))
-        dispatch(ActionCreator.incrementMoviesCount(getState().filteredMovies.length, MOVIES_ON_PAGE_COUNT, getState().showingMoviesCount))
+        dispatch(ActionCreator.filterMoviesByGenre(getState().static.genre, response.data))
+        dispatch(ActionCreator.incrementMoviesCount(getState().dynamic.filteredMovies.length, MOVIES_ON_PAGE_COUNT, getState().showingMoviesCount))
 
         return response
       })
@@ -99,11 +74,6 @@ const Operation = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case `SET_GENRE`:
-      return Object.assign({}, state, {
-        genre: action.payload
-      })
-
     case `FILTER_MOVIES`:
       return Object.assign({}, state, {
         filteredMovies: action.payload
@@ -119,11 +89,6 @@ const reducer = (state = initialState, action) => {
         showingMoviesCount: state.showingMoviesCount + action.payload
       })
 
-    case `TOGGLE_FULL_VIDEO`:
-      return Object.assign({}, state, {
-        isFullVideoOpened: action.payload
-      })
-
     case `LOAD_MOVIES`:
       return Object.assign({}, state, {
         movies: action.payload
@@ -133,30 +98,10 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         hasServerError: action.payload
       })
-
-    case `FULL_RESET`:
-      return Object.assign({}, initialState)
   }
 
   return state
 }
 
-const devToolsFn = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()
-  : (fn) => fn
 
-const store = createStore(
-    reducer,
-    compose(applyMiddleware(withExtraArgument(api)), devToolsFn)
-)
-
-
-export {
-  filterMoviesByGenre,
-  MOVIES_ON_PAGE_COUNT,
-  ActionCreator,
-  store,
-  reducer,
-  api,
-  Operation
-}
+export {reducer, ActionCreator, Operation, filterMoviesByGenre, MOVIES_ON_PAGE_COUNT}

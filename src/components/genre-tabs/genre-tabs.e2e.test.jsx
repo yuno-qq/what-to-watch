@@ -4,7 +4,7 @@ import Adapter from "@cfaester/enzyme-adapter-react-18"
 import {describe, test, expect, beforeEach} from "@jest/globals"
 import {Provider} from 'react-redux'
 
-import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducer"
+import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducers"
 
 import GenreTabs from "./genre-tabs.jsx"
 import App from "../app/app.jsx"

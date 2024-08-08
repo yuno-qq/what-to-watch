@@ -2,7 +2,7 @@ import {describe, test, expect, beforeEach} from "@jest/globals"
 import MockAdapter from "axios-mock-adapter"
 import axios from "axios"
 
-import {filterMoviesByGenre, ActionCreator, reducer, Operation} from './reducer'
+import {filterMoviesByGenre, ActionCreator, reducer, Operation} from './reducers'
 
 
 let movies

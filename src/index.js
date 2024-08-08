@@ -2,7 +2,8 @@ import React from "react"
 import ReactDOM from "react-dom"
 import {Provider} from "react-redux"
 
-import {store, Operation} from "./reducer"
+import {store} from "./store/configure-store"
+import {Operation} from "./reducers/dynamic"
 
 import App from "./containers/app"
 

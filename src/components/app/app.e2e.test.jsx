@@ -5,7 +5,7 @@ import {describe, test, expect, beforeEach} from "@jest/globals"
 import {Provider} from "react-redux"
 import MockAdapter from "axios-mock-adapter"
 
-import {store, Operation, api} from "../../reducer"
+import {store, Operation, api} from "../../reducers"
 
 import App from "../../containers/app"
 

@@ -4,7 +4,7 @@ import Enzyme, {mount} from "enzyme"
 import Adapter from "@cfaester/enzyme-adapter-react-18"
 import {Provider} from "react-redux"
 
-import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducer"
+import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducers"
 
 import ShowMore from "./show-more.jsx"
 import App from "../app/app.jsx"

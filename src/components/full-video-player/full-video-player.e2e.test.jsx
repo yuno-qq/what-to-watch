@@ -5,7 +5,7 @@ import {test, expect, describe, beforeEach} from "@jest/globals"
 import {Provider} from "react-redux"
 import {compose} from "redux"
 
-import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducer"
+import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducers"
 
 import FullVideoPlayer from "./full-video-player.jsx"
 

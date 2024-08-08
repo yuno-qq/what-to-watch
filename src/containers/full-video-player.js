@@ -1,6 +1,6 @@
 import {connect} from "react-redux"
 
-import {ActionCreator} from "../reducer"
+import {ActionCreator} from "../reducers/static"
 
 import FullVideoPlayer from "../components/full-video-player/full-video-player.jsx"
 

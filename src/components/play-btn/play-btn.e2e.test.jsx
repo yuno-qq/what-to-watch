@@ -4,7 +4,7 @@ import Adapter from "@cfaester/enzyme-adapter-react-18"
 import {test, expect, describe, beforeEach} from "@jest/globals"
 import {Provider} from 'react-redux'
 
-import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducer"
+import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducers"
 
 import PlayBtn from "./play-btn.jsx"
 

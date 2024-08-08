@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
 
-import {ActionCreator, store, MOVIES_ON_PAGE_COUNT} from "../reducer"
+import {ActionCreator, MOVIES_ON_PAGE_COUNT} from "../reducers/dynamic"
+import {store} from "../store/configure-store"
 
 import ShowMore from "../components/show-more/show-more.jsx"
 
@@ -8,7 +9,7 @@ import ShowMore from "../components/show-more/show-more.jsx"
 const mapDispatchToProps = (dispatch, ownProps) => {
   return Object.assign({}, ownProps, {
     onClick: () => {
-      dispatch(ActionCreator.incrementMoviesCount(store.getState().filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().showingMoviesCount))
+      dispatch(ActionCreator.incrementMoviesCount(store.getState().dynamic.filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().dynamic.showingMoviesCount))
     }
   })
 }
