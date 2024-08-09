@@ -98,6 +98,9 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         hasServerError: action.payload
       })
+
+    case `FULL_RESET`:
+      return Object.assign({}, initialState)
   }
 
   return state

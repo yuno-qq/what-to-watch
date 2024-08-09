@@ -5,7 +5,8 @@ import {test, expect, describe, beforeEach} from "@jest/globals"
 import {Provider} from "react-redux"
 import {compose} from "redux"
 
-import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducers"
+import {MOVIES_ON_PAGE_COUNT, ActionCreator} from "../../reducers/dynamic/dynamic"
+import {store} from "../../store/configure-store"
 
 import FullVideoPlayer from "./full-video-player.jsx"
 
@@ -305,8 +306,8 @@ describe(`<FullVideoPlayer> exit UNIT`, () => {
 describe(`<FullVideoPlayer> exit CONNECTED`, () => {
   act(() => {
     store.dispatch(ActionCreator.loadMovies(movies))
-    store.dispatch(ActionCreator.filterMoviesByGenre(store.getState().genre, movies))
-    store.dispatch(ActionCreator.incrementMoviesCount(store.getState().filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().showingMoviesCount))
+    store.dispatch(ActionCreator.filterMoviesByGenre(store.getState().static.genre, movies))
+    store.dispatch(ActionCreator.incrementMoviesCount(store.getState().dynamic.filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().dynamic.showingMoviesCount))
   })
 
   const wrapper = mount(<Provider store={store}>
@@ -316,13 +317,13 @@ describe(`<FullVideoPlayer> exit CONNECTED`, () => {
   const playBtn = wrapper.find(`.btn--play`)
   playBtn.simulate(`click`)
 
-  expect(store.getState().isFullVideoOpened).toBe(true)
+  expect(store.getState().static.isFullVideoOpened).toBe(true)
   expect(wrapper.find(`.player`).length).toBe(1)
 
   const exitBtn = wrapper.find(`.player__exit`)
   exitBtn.simulate(`click`)
 
-  expect(store.getState().isFullVideoOpened).toBe(false)
+  expect(store.getState().static.isFullVideoOpened).toBe(false)
   expect(wrapper.find(`.player`).length).toBe(0)
 })
 

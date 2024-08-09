@@ -4,7 +4,8 @@ import Enzyme, {mount} from "enzyme"
 import Adapter from "@cfaester/enzyme-adapter-react-18"
 import {Provider} from "react-redux"
 
-import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducers"
+import {ActionCreator, MOVIES_ON_PAGE_COUNT} from "../../reducers/dynamic/dynamic"
+import {store} from "../../store/configure-store"
 
 import ShowMore from "./show-more.jsx"
 import App from "../app/app.jsx"
@@ -268,8 +269,8 @@ describe(`<ShowMore> click CONNECTED`, () => {
 
     act(() => {
       store.dispatch(ActionCreator.loadMovies(movies))
-      store.dispatch(ActionCreator.filterMoviesByGenre(store.getState().genre, movies))
-      store.dispatch(ActionCreator.incrementMoviesCount(store.getState().filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().showingMoviesCount))
+      store.dispatch(ActionCreator.filterMoviesByGenre(store.getState().static.genre, movies))
+      store.dispatch(ActionCreator.incrementMoviesCount(store.getState().dynamic.filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().dynamic.showingMoviesCount))
     })
 
     const wrapper = mount(
@@ -283,25 +284,25 @@ describe(`<ShowMore> click CONNECTED`, () => {
 
     clickAndFind()
 
-    expect(store.getState().showingMoviesCount).toBe(8)
+    expect(store.getState().dynamic.showingMoviesCount).toBe(8)
     expect(showMoreBtn.length).toBe(1)
     expect(moviesCards.length).toBe(8)
 
     clickAndFind()
 
-    expect(store.getState().showingMoviesCount).toBe(12)
+    expect(store.getState().dynamic.showingMoviesCount).toBe(12)
     expect(showMoreBtn.length).toBe(1)
     expect(moviesCards.length).toBe(12)
 
     clickAndFind()
 
-    expect(store.getState().showingMoviesCount).toBe(16)
+    expect(store.getState().dynamic.showingMoviesCount).toBe(16)
     expect(showMoreBtn.length).toBe(1)
     expect(moviesCards.length).toBe(16)
 
     clickAndFind()
 
-    expect(store.getState().showingMoviesCount).toBe(19)
+    expect(store.getState().dynamic.showingMoviesCount).toBe(19)
     expect(showMoreBtn.length).toBe(0)
     expect(moviesCards.length).toBe(19)
   })
@@ -315,8 +316,8 @@ describe(`<ShowMore> click CONNECTED`, () => {
 
     act(() => {
       store.dispatch(ActionCreator.loadMovies(movies))
-      store.dispatch(ActionCreator.filterMoviesByGenre(store.getState().genre, movies))
-      store.dispatch(ActionCreator.incrementMoviesCount(store.getState().filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().showingMoviesCount))
+      store.dispatch(ActionCreator.filterMoviesByGenre(store.getState().static.genre, movies))
+      store.dispatch(ActionCreator.incrementMoviesCount(store.getState().dynamic.filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().dynamic.showingMoviesCount))
     })
 
     const wrapper = mount(
@@ -335,7 +336,7 @@ describe(`<ShowMore> click CONNECTED`, () => {
 
     find()
 
-    expect(store.getState().showingMoviesCount).toBe(8)
+    expect(store.getState().dynamic.showingMoviesCount).toBe(8)
     expect(moviesCards.length).toBe(8)
 
     genreLinks.at(4).simulate(`click`, {
@@ -344,7 +345,7 @@ describe(`<ShowMore> click CONNECTED`, () => {
 
     find()
 
-    expect(store.getState().showingMoviesCount).toBe(4)
+    expect(store.getState().dynamic.showingMoviesCount).toBe(4)
     expect(moviesCards.length).toBe(4)
   })
 })

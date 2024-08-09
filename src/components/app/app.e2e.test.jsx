@@ -5,7 +5,8 @@ import {describe, test, expect, beforeEach} from "@jest/globals"
 import {Provider} from "react-redux"
 import MockAdapter from "axios-mock-adapter"
 
-import {store, Operation, api} from "../../reducers"
+import {Operation} from "../../reducers/dynamic/dynamic"
+import {store, api} from "../../store/configure-store"
 
 import App from "../../containers/app"
 
@@ -226,8 +227,10 @@ const movies = [
 ]
 
 beforeEach(() => {
-  store.dispatch({
-    type: `FULL_RESET`
+  act(() => {
+    store.dispatch({
+      type: `FULL_RESET`
+    })
   })
 })
 
@@ -248,8 +251,8 @@ describe(`<App> load`, () => {
       return loadMovies(store.dispatch, store.getState, api)
         // eslint-disable-next-line max-nested-callbacks
         .then(() => {
-          expect(store.getState().hasServerError).toBe(false)
-          expect(store.getState().movies).toEqual(movies)
+          expect(store.getState().dynamic.hasServerError).toBe(false)
+          expect(store.getState().dynamic.movies).toEqual(movies)
         })
     })
   })
@@ -271,8 +274,8 @@ describe(`<App> load`, () => {
       return loadMovies(store.dispatch, store.getState, api)
         // eslint-disable-next-line max-nested-callbacks
         .catch(() => {
-          expect(store.getState().hasServerError).toBe(true)
-          expect(store.getState().movies).toEqual([])
+          expect(store.getState().dynamic.hasServerError).toBe(true)
+          expect(store.getState().dynamic.movies).toEqual([])
         })
     })
   })

@@ -2,7 +2,7 @@ import {describe, test, expect, beforeEach} from "@jest/globals"
 import MockAdapter from "axios-mock-adapter"
 import axios from "axios"
 
-import {filterMoviesByGenre, ActionCreator, Operation} from "./dynamic"
+import {filterMoviesByGenre, ActionCreator, Operation, reducer} from "./dynamic"
 
 
 let movies
@@ -385,11 +385,15 @@ describe(`Operation.loadMovies() test`, () => {
       .reply(200, [{genre: {id: `all_genres`}}])
 
     return loadMovies(dispatch, () => ({
-      genre: {
-        id: `all_genres`,
-        name: `All genres`
+      static: {
+        genre: {
+          id: `all_genres`,
+          name: `All genres`
+        },
       },
-      filteredMovies: new Array(7).fill(null)
+      dynamic: {
+        filteredMovies: new Array(7).fill(null)
+      }
     }), axios)
       .then((response) => {
         expect(response.data).toEqual([{genre: {id: `all_genres`}}])

@@ -4,7 +4,8 @@ import Adapter from "@cfaester/enzyme-adapter-react-18"
 import {describe, test, expect, beforeEach} from "@jest/globals"
 import {Provider} from 'react-redux'
 
-import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducers"
+import {ActionCreator, MOVIES_ON_PAGE_COUNT} from "../../reducers/dynamic/dynamic"
+import {store} from "../../store/configure-store"
 
 import GenreTabs from "./genre-tabs.jsx"
 import App from "../app/app.jsx"
@@ -270,15 +271,15 @@ describe(`<GenreTabs> click on tabs CONNECTED`, () => {
   test(`2nd tab + 3rd tab + 1st tab`, () => {
     act(() => {
       store.dispatch(ActionCreator.loadMovies(movies))
-      store.dispatch(ActionCreator.filterMoviesByGenre(store.getState().genre, movies))
-      store.dispatch(ActionCreator.incrementMoviesCount(store.getState().filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().showingMoviesCount))
+      store.dispatch(ActionCreator.filterMoviesByGenre(store.getState().static.genre, movies))
+      store.dispatch(ActionCreator.incrementMoviesCount(store.getState().dynamic.filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().dynamic.showingMoviesCount))
     })
 
     const wrapper = mount(<Provider store={store}>
       <App hasServerError={false} movies={movies} isFullVideoOpened={false} />
     </Provider>)
 
-    expect(store.getState().genre).toEqual({
+    expect(store.getState().static.genre).toEqual({
       id: `all`,
       name: `All genres`,
     })
@@ -296,12 +297,12 @@ describe(`<GenreTabs> click on tabs CONNECTED`, () => {
     tab2 = wrapper.find(`.catalog__genres-item`).at(1)
     let movieCards = wrapper.find(`.small-movie-card`)
 
-    expect(store.getState().genre).toEqual({
+    expect(store.getState().static.genre).toEqual({
       id: `comedies`,
       name: `Comedies`
     })
-    expect(store.getState().filteredMovies.length).toEqual(4)
-    expect(store.getState().filteredMovies.every((movie) => movie.genre.id === `comedies`)).toBe(true)
+    expect(store.getState().dynamic.filteredMovies.length).toEqual(4)
+    expect(store.getState().dynamic.filteredMovies.every((movie) => movie.genre.id === `comedies`)).toBe(true)
 
     expect(tab2.hasClass(`catalog__genres-item--active`)).toBe(true)
     expect(movieCards.length).toBe(4)
@@ -317,12 +318,12 @@ describe(`<GenreTabs> click on tabs CONNECTED`, () => {
     tab3 = wrapper.find(`.catalog__genres-item`).at(2)
     movieCards = wrapper.find(`.small-movie-card`)
 
-    expect(store.getState().genre).toEqual({
+    expect(store.getState().static.genre).toEqual({
       id: `crime`,
       name: `Crime`
     })
-    expect(store.getState().filteredMovies.length).toEqual(2)
-    expect(store.getState().filteredMovies.every((movie) => movie.genre.id === `crime`)).toBe(true)
+    expect(store.getState().dynamic.filteredMovies.length).toEqual(2)
+    expect(store.getState().dynamic.filteredMovies.every((movie) => movie.genre.id === `crime`)).toBe(true)
 
     expect(tab3.hasClass(`catalog__genres-item--active`)).toBe(true)
     expect(movieCards.length).toBe(2)

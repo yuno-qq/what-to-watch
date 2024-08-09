@@ -220,21 +220,25 @@ const movies = [
 describe(`<App> snapshots:`, () => {
   test(`should render loader`, () => {
     const initialState = {
-      genre: {
-        id: `all`,
-        name: `All genres`
+      static: {
+        genre: {
+          id: `all`,
+          name: `All genres`
+        },
       },
-      showingMoviesCount: 2,
-      hasServerError: false,
-      movies: [],
-      filteredMovies: []
+      dynamic: {
+        showingMoviesCount: 2,
+        hasServerError: false,
+        movies: [],
+        filteredMovies: []
+      }
     }
 
     const store = configureStore()(initialState)
 
     const tree = renderer.create(
         <Provider store={store}>
-          <App isFullVideoOpened={false} hasServerError={initialState.hasServerError} movies={initialState.movies} />
+          <App isFullVideoOpened={false} hasServerError={false} movies={[]} />
         </Provider>
     ).toJSON()
 
@@ -243,21 +247,25 @@ describe(`<App> snapshots:`, () => {
 
   test(`should render error`, () => {
     const initialState = {
-      genre: {
-        id: `all`,
-        name: `All genres`
+      static: {
+        genre: {
+          id: `all`,
+          name: `All genres`
+        },
       },
-      showingMoviesCount: 2,
-      hasServerError: true,
-      movies: [{movie: 1}],
-      filteredMovies: [{movie: 1}]
+      dynamic: {
+        showingMoviesCount: 2,
+        hasServerError: true,
+        movies: [{movie: 1}],
+        filteredMovies: [{movie: 1}]
+      }
     }
 
     const store = configureStore()(initialState)
 
     const tree = renderer.create(
         <Provider store={store}>
-          <App isFullVideoOpened={false} hasServerError={initialState.hasServerError} movies={initialState.movies} />
+          <App isFullVideoOpened={false} hasServerError={true} movies={[{movie: 1}]} />
         </Provider>
     ).toJSON()
 
@@ -266,34 +274,38 @@ describe(`<App> snapshots:`, () => {
 
   test(`should render main page`, () => {
     const initialState = {
-      genre: {
-        id: `all`,
-        name: `All genres`
-      },
-      movies,
-      filteredMovies: [
-        {
-          genre: {
-            id: `comedies`,
-            name: `Comedies`,
-          },
-          imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-          url: `/`,
-          videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-          name: `Красный дракон`
+      static: {
+        genre: {
+          id: `all`,
+          name: `All genres`
         },
-        {
-          genre: {
-            id: `comedies`,
-            name: `Comedies`,
+      },
+      dynamic: {
+        movies,
+        filteredMovies: [
+          {
+            genre: {
+              id: `comedies`,
+              name: `Comedies`,
+            },
+            imageSrc: `https://placehold.co/280x175/EEE/31343C`,
+            url: `/`,
+            videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+            name: `Красный дракон`
           },
-          imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-          url: `/`,
-          videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-          name: `Молчание ягнят`
-        }
-      ],
-      showingMoviesCount: 2,
+          {
+            genre: {
+              id: `comedies`,
+              name: `Comedies`,
+            },
+            imageSrc: `https://placehold.co/280x175/EEE/31343C`,
+            url: `/`,
+            videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+            name: `Молчание ягнят`
+          }
+        ],
+        showingMoviesCount: 2,
+      }
     }
 
     const store = configureStore()(initialState)
@@ -309,35 +321,39 @@ describe(`<App> snapshots:`, () => {
 
   test(`should render main page with full video`, () => {
     const initialState = {
-      genre: {
-        id: `all`,
-        name: `All genres`
-      },
-      movies,
-      filteredMovies: [
-        {
-          genre: {
-            id: `comedies`,
-            name: `Comedies`,
-          },
-          imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-          url: `/`,
-          videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-          name: `Красный дракон`
+      static: {
+        genre: {
+          id: `all`,
+          name: `All genres`
         },
-        {
-          genre: {
-            id: `comedies`,
-            name: `Comedies`,
+        isFullVideoOpened: true
+      },
+      dynamic: {
+        movies,
+        filteredMovies: [
+          {
+            genre: {
+              id: `comedies`,
+              name: `Comedies`,
+            },
+            imageSrc: `https://placehold.co/280x175/EEE/31343C`,
+            url: `/`,
+            videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+            name: `Красный дракон`
           },
-          imageSrc: `https://placehold.co/280x175/EEE/31343C`,
-          url: `/`,
-          videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-          name: `Молчание ягнят`
-        }
-      ],
-      showingMoviesCount: 2,
-      isFullVideoOpened: true
+          {
+            genre: {
+              id: `comedies`,
+              name: `Comedies`,
+            },
+            imageSrc: `https://placehold.co/280x175/EEE/31343C`,
+            url: `/`,
+            videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+            name: `Молчание ягнят`
+          }
+        ],
+        showingMoviesCount: 2,
+      }
     }
 
     const store = configureStore()(initialState)

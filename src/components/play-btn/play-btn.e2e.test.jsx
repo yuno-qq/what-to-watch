@@ -4,7 +4,8 @@ import Adapter from "@cfaester/enzyme-adapter-react-18"
 import {test, expect, describe, beforeEach} from "@jest/globals"
 import {Provider} from 'react-redux'
 
-import {ActionCreator, MOVIES_ON_PAGE_COUNT, store} from "../../reducers"
+import {ActionCreator, MOVIES_ON_PAGE_COUNT} from "../../reducers/dynamic/dynamic"
+import {store} from "../../store/configure-store"
 
 import PlayBtn from "./play-btn.jsx"
 
@@ -248,8 +249,8 @@ describe(`<PlayBtn> click CONNECTED`, () => {
   test(`should open video player`, () => {
     act(() => {
       store.dispatch(ActionCreator.loadMovies(movies))
-      store.dispatch(ActionCreator.filterMoviesByGenre(store.getState().genre, movies))
-      store.dispatch(ActionCreator.incrementMoviesCount(store.getState().filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().showingMoviesCount))
+      store.dispatch(ActionCreator.filterMoviesByGenre(store.getState().static.genre, movies))
+      store.dispatch(ActionCreator.incrementMoviesCount(store.getState().dynamic.filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().dynamic.showingMoviesCount))
     })
 
     const wrapper = mount(<Provider store={store}>
@@ -262,7 +263,7 @@ describe(`<PlayBtn> click CONNECTED`, () => {
     let player = wrapper.find(`.player`)
 
     expect(player.length).toBe(1)
-    expect(store.getState().isFullVideoOpened).toBe(true)
+    expect(store.getState().static.isFullVideoOpened).toBe(true)
 
     let exitBtn = wrapper.find(`.player__exit`)
     exitBtn.simulate(`click`)
@@ -270,6 +271,6 @@ describe(`<PlayBtn> click CONNECTED`, () => {
     player = wrapper.find(`.player`)
 
     expect(player.length).toBe(0)
-    expect(store.getState().isFullVideoOpened).toBe(false)
+    expect(store.getState().static.isFullVideoOpened).toBe(false)
   })
 })
