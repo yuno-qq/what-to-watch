@@ -118,4 +118,4 @@ const reducer = (state = initialState, action) => {
 }
 
 
-export {reducer, ActionCreator, Operation, filterMoviesByGenre, MOVIES_ON_PAGE_COUNT}
+export {reducer, ActionCreator, Operation, filterMoviesByGenre, MOVIES_ON_PAGE_COUNT, selectFilteredMoviesByGenre}

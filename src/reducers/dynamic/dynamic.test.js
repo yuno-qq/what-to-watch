@@ -2,7 +2,7 @@ import {describe, test, expect, beforeEach} from "@jest/globals"
 import MockAdapter from "axios-mock-adapter"
 import axios from "axios"
 
-import {filterMoviesByGenre, ActionCreator, Operation, reducer} from "./dynamic"
+import {filterMoviesByGenre, ActionCreator, Operation, reducer, selectFilteredMoviesByGenre} from "./dynamic"
 
 
 let movies
@@ -238,6 +238,24 @@ describe(`filterMoviesByGenre() test`, () => {
     }, [])
 
     expect(filteredMovies.length).toBe(0)
+  })
+})
+
+describe(`selectFilteredMoviesByGenre() test`, () => {
+  test(`should work correctly`, () => {
+    const state = {
+      static: {
+        genre: {
+          id: `dramas`,
+          name: `Dramas`
+        }
+      },
+      dynamic: {
+        movies
+      }
+    }
+
+    expect(selectFilteredMoviesByGenre(state).every((movie) => movie.genre.id === `dramas`)).toBe(true)
   })
 })
 
