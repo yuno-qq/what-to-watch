@@ -271,7 +271,7 @@ describe(`<GenreTabs> click on tabs CONNECTED`, () => {
   test(`2nd tab + 3rd tab + 1st tab`, () => {
     act(() => {
       store.dispatch(ActionCreator.loadMovies(movies))
-      store.dispatch(ActionCreator.filterMoviesByGenre(store.getState().static.genre, movies))
+      store.dispatch(ActionCreator.filterMoviesByGenre(store.getState()))
       store.dispatch(ActionCreator.incrementMoviesCount(store.getState().dynamic.filteredMovies.length, MOVIES_ON_PAGE_COUNT, store.getState().dynamic.showingMoviesCount))
     })
 

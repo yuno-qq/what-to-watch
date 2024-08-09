@@ -243,10 +243,19 @@ describe(`filterMoviesByGenre() test`, () => {
 
 describe(`ActionCreator.filterMoviesByGenre() test`, () => {
   test(`should return action with "dramas" payload`, () => {
-    const action = ActionCreator.filterMoviesByGenre({
-      id: `dramas`,
-      name: `Dramas`,
-    }, movies)
+    const state = {
+      static: {
+        genre: {
+          id: `dramas`,
+          name: `Dramas`,
+        }
+      },
+      dynamic: {
+        movies
+      }
+    }
+
+    const action = ActionCreator.filterMoviesByGenre(state)
 
     expect(action.type).toBe(`FILTER_MOVIES`)
     expect(action.payload.length).toBe(10)
@@ -392,7 +401,8 @@ describe(`Operation.loadMovies() test`, () => {
         },
       },
       dynamic: {
-        filteredMovies: new Array(7).fill(null)
+        movies: [{genre: {id: `all_genres`}}],
+        filteredMovies: [{genre: {id: `all_genres`}}]
       }
     }), axios)
       .then((response) => {

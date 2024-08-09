@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return Object.assign({}, ownProps, {
     onClickTab: (genre) => {
       dispatch(ActionCreatorStatic.setGenre(genre))
-      dispatch(ActionCreatorDynamic.filterMoviesByGenre(genre, store.getState().dynamic.movies))
+      dispatch(ActionCreatorDynamic.filterMoviesByGenre(store.getState()))
       dispatch(ActionCreatorDynamic.resetMoviesCount())
     }
   })

@@ -1,3 +1,6 @@
+import {createSelector} from "reselect"
+
+
 const MOVIES_ON_PAGE_COUNT = 4 // TODO 20
 
 const initialState = {
@@ -15,11 +18,19 @@ const filterMoviesByGenre = (genre, movies) => {
   return movies.filter((movie) => movie.genre.id === genre.id)
 }
 
+const selectFilteredMoviesByGenre = createSelector(
+    [
+      (state) => state.static.genre,
+      (state) => state.dynamic.movies,
+    ],
+    filterMoviesByGenre
+)
+
 const ActionCreator = {
-  filterMoviesByGenre: (genre, movies) => {
+  filterMoviesByGenre: (state) => {
     return {
       type: `FILTER_MOVIES`,
-      payload: filterMoviesByGenre(genre, movies)
+      payload: selectFilteredMoviesByGenre(state)
     }
   },
 
@@ -64,7 +75,7 @@ const Operation = {
         }
 
         dispatch(ActionCreator.loadMovies(response.data))
-        dispatch(ActionCreator.filterMoviesByGenre(getState().static.genre, response.data))
+        dispatch(ActionCreator.filterMoviesByGenre(getState()))
         dispatch(ActionCreator.incrementMoviesCount(getState().dynamic.filteredMovies.length, MOVIES_ON_PAGE_COUNT, getState().showingMoviesCount))
 
         return response
